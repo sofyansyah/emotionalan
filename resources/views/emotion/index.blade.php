@@ -45,7 +45,7 @@
 			<div class="cd-timeline-content">
 				<p><a href={{url('emotion/'.$emotion->id)}}><h4 style="padding:0px; margin:0px;">{{$emotion->text}}</h4></a></p>
 				<a href="#0" class="cd-read-more">Read more</a>
-				<span> Jan 18</span>
+				<span> {{$emotion->created_at->diffForHumans()}}</span>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
 

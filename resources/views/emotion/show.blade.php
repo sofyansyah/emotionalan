@@ -38,6 +38,7 @@
 				<div class="col-md-12 text-center">
 					<img src="{{asset('img/emot/'.$emotion->emot)}}" width="auto;" height="auto;">
 					<h2 style="font-size:30px;margin-top: 20px!important;">{{$emotion->text}}</h2>
+					<p>{{$emotion->created_at->diffForHumans()}}</p>
 				</div>
 			</div>
 			<div class="panel-footer">
@@ -59,7 +60,7 @@
 					<!-- <img src="{{asset('img/emot/'.$emotion->emot)}}" class="img-circle" height="100px" width:100px; alt=""> -->
 				</div> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content">
-					<p>aaaa</p>
+					<p>{{-- $comment->reply --}}</p>
 				</div> <!-- cd-timeline-content -->
 			</div> <!-- cd-timeline-block -->
 			</section> <!-- cd-timeline -->
