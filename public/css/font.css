@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Gibson';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/gibson-regular.otf');
+}
+
+/*@font-face {
+  font-family: 'GibsonBold';
+  src: url('http://bagidelo.dev/public/fonts/Gibson%Bold%Typeface.otf'); 
+}*/
+
+@font-face {
+  font-family: 'madita';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/madita-semibold.otf');
+}
+@
+@font-face {
+  font-family: 'maditabold';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/madita-bold.otf');
+}
+@font-face {
+  font-family: 'opensans';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/OpenSans-Regular.ttf');
+}
+@font-face {
+  font-family: 'opensans-bold';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/OpenSans-Bold.ttf');
+}
+font-face {
+  font-family: 'helvetica';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/helvetica-neue.otf');
+}
+@font-face {
+  font-family: 'helvetica-bold';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/helvetica-bold.otf');
+}
