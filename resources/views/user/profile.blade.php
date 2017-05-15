@@ -5,9 +5,6 @@
   .container{
     min-height: 100%; 
   }
-  .panel-default{
-    margin-bottom: 0px;
-  }
   .comment{
     
   }
@@ -45,7 +42,7 @@
 
 <div class="container">
   <div class="col-md-10 col-md-offset-1 nopadding">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="padding: 10px 20px;">
       <div class="panel-body text-left">
         <div class="col-md-3 nopadding">
           <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="120px" width="120px;" style="top:10;">
@@ -80,22 +77,17 @@
     </div>
 
     <div class="col-md-10 col-md-offset-1 pull-right">
-      <div class="panel panel-default">
-      <div class="panel-body" style="padding: 20px 35px!important; background-color: #fff!important;">
-          <p>Analysis and design mendeskripsikan solusi teknis yang akan digunakan untuk mencapai perilaku yang sudah ditetapkan dalam kegiatan requirement. Desain disini meliputi desain alur, desain interaksi, desain visual, dan desain teknis.</p>
-        </div>
-      </div>
+    <section id="cd-timeline" class="cd-container">
+      <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-movie">
+
+        </div> <!-- cd-timeline-img -->
+        <div class="cd-timeline-content">
+          <p>aaaa</p>
+        </div> <!-- cd-timeline-content -->
+      </div> <!-- cd-timeline-block -->
+      </section> <!-- cd-timeline -->
     </div>
-
-    <div class="col-md-10 col-md-offset-1 pull-right">
-      <div class="panel panel-default">
-      <div class="panel-body" style="padding: 20px 35px!important; background-color: #fff!important;">
-          <p>Analysis and design mendeskripsikan solusi teknis yang akan digunakan untuk mencapai perilaku yang sudah ditetapkan dalam kegiatan requirement. Desain disini meliputi desain alur, desain interaksi, desain visual, dan desain teknis.</p>
-        </div>
-      </div>
-    </div>
-
-
   </div>
 
 </div>

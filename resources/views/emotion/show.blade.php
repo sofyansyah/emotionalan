@@ -56,7 +56,7 @@
 		<section id="cd-timeline" class="cd-container">
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-movie">
-					<img src="{{asset('img/emot/'.$emotion->emot)}}" class="img-circle" height="100px" width:100px; alt="">
+					<!-- <img src="{{asset('img/emot/'.$emotion->emot)}}" class="img-circle" height="100px" width:100px; alt=""> -->
 				</div> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content">
 					<p>aaaa</p>
