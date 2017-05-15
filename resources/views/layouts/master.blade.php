@@ -6,10 +6,12 @@
     <title>Staggler</title>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700|Merriweather:400italic,400' rel='stylesheet' type='text/css'>
      <!-- Resource style -->
+     <link rel="stylesheet" href="{{asset('css/font.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
     <link rel="stylesheet" href="{{asset('css/reset.css')}}">
-    <link rel="stylesheet" href="{{asset('css/font.css')}}">
+    
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     
     @yield('css_styles')

@@ -4,6 +4,7 @@ h1, h2, h3, h4{
 }
 body{
 	background-color: #fafafa;	
+	font-family: 'opensans'!important;
 }
 .navbar-default{
 	background-color: #fff;
@@ -11,7 +12,7 @@ body{
 #logo{
 	font-family: 'madita';
 }
-p, a {font-family: 'opensans';}
+p, a {font-family: 'helvetica';}
 .panel-default{
 	border: 1px solid #eee;
 	background-color: #fff;
@@ -64,7 +65,7 @@ a:link {
 text-decoration:none;
 }
 #caption{
-	font-family: 'opensans-bold';
+	font-family: 'opensans';
 }
 	.container{
 		max-width:900px;
@@ -95,7 +96,7 @@ text-decoration:none;
 	li{
 		list-style-type: none;
 		font-size:14px;
-		font-family: 'Helvetica';
+		
 	}
 	li:hover{
 		background-color: #f9f9f9;
@@ -222,8 +223,8 @@ Primary style
 
 -------------------------------- */
 html * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /*-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;*/
 }
 
 *, *:after, *:before {
@@ -232,27 +233,11 @@ html * {
   box-sizing: border-box;
 }
 
-body {
-  font-size: 100%;
-  font-family: "Droid Serif", serif;
-  color: #7f8c97;
-  background-color: #e9f0f5;
-}
-
-a {
-  color: #acb7c0;
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-}
 
 img {
   max-width: 100%;
 }
 
-h1, h2 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-}
 
 /* -------------------------------- 
 

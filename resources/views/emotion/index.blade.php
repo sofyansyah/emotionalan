@@ -23,7 +23,7 @@
 	
 	<div class="col-md-10 col-md-offset-1">
 	@forelse( $emotions as $emotion )
-	@if ($emotion->user_id ==Auth::id())
+	{{-- @if ($emotion->user_id ==Auth::id()) --}}
 <section id="cd-timeline" class="cd-container">
 		<!-- <div class="cd-timeline-block">
 			<div class="cd-timeline-img cd-picture">
@@ -52,7 +52,7 @@
 
 	</section> <!-- cd-timeline -->
 
-	@endif
+	{{-- @endif --}}
 	@empty
 	No Emot
 
