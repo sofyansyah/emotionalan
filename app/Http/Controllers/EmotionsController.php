@@ -68,7 +68,7 @@ class EmotionsController extends Controller
     {
         $emotion = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
                             ->where('emotions.id', $id)
-                            ->select('emotions.*','users.username')
+                            ->select('emotions.*','users.username', 'users.avatar')
                             ->first();
 
          $comment = Comment::where('post_id',$id)

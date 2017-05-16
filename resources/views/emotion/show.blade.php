@@ -36,6 +36,10 @@
 					</ul>
 				</div>
 				<div class="col-md-12 text-center">
+				<civ class="col-md-12 text-left">
+				<img src="{{asset('img/avatar/'.$emotion->avatar)}}" class="img-circle" width="35;" height="35;">
+					{{$emotion->username}}
+					</civ>
 					<img src="{{asset('img/emot/'.$emotion->emot)}}" width="auto;" height="auto;">
 					<h2 style="font-size:30px;margin-top: 20px!important;">{{$emotion->text}}</h2>
 					<p>{{$emotion->created_at->diffForHumans()}}</p>
