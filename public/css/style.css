@@ -3,7 +3,8 @@ h1, h2, h3, h4{
 	font-family: 'opensans-bold';
 }
 body{
-	background-color: #f7f3ef;	
+	background-color: #f5f5f5;
+  background-image: url("https://i.servimg.com/u/f72/17/19/90/23/backgr10.png");	
 	font-family: 'opensans'!important;
 }
 .navbar-default{
@@ -291,8 +292,8 @@ header h1 {
 #cd-timeline {
   position: relative;
  /* padding: 2em 0;*/
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 #cd-timeline::before {
   /* this is the vertical line */
@@ -353,8 +354,8 @@ header h1 {
 }
 .cd-timeline-img img {
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   position: relative;
   left: 11;
   top: 0;
@@ -449,12 +450,12 @@ header h1 {
   }
 }
 .cd-timeline-content {
-  position: relative;
-  margin-left: 80px;
-  background: white;
-  border-radius: 0.25em;
-  padding: 1em;
-  /*box-shadow: 0 3px 0 #d7e4ed;*/
+position: relative;
+margin-left: 80px;
+box-shadow: inset 0px 1px 0px 0px #ffffff;
+background-color: #f9f9f9;
+border-radius: 10px;
+border: 1px solid #dcdcdc;
 }
 .cd-timeline-content:after {
   content: "";
@@ -490,7 +491,7 @@ header h1 {
   padding: .8em 0;
   opacity: .7;
 }
-.cd-timeline-content::before {
+/*.cd-timeline-content::before {
   content: '';
   position: absolute;
   top: 16px;
@@ -498,8 +499,8 @@ header h1 {
   height: 0;
   width: 0;
   border: 7px solid transparent;
-  border-right: 7px solid white;
-}
+  border-right: 7px solid #f9f9f9;
+}*/
 @media only screen and (min-width: 768px) {
   .cd-timeline-content h2 {
     font-size: 20px;
@@ -517,7 +518,7 @@ header h1 {
 @media only screen and (min-width: 1170px) {
   .cd-timeline-content {
     /*margin-right: -10;*/
-    padding: 1.6em;
+    padding: 15px;
     /*width: 45%;*/
     
   }
