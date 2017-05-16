@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Hash;
-
 use App\User;
+use App\Emotion;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -19,8 +18,9 @@ class ProfileController extends Controller
      //        ->first();
            
         $user = User::whereUsername($id)->first();
+        $post = Emotion::where('user_id',Auth::user()->id)->get();
        
-    	return view ('user.profile', compact('user'));
+    	return view ('user.profile', compact('user','post'));
     }
 
     public function edit_profile($username)

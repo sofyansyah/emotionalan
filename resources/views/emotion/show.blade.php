@@ -20,7 +20,7 @@
 
 @section('content')
 <div class="container">
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-12 nopadding">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="col-md-12">
@@ -41,7 +41,7 @@
 					<p>{{$emotion->created_at->diffForHumans()}}</p>
 				</div>
 			</div>
-			<div class="panel-footer">
+			<div class="panel-footer" style="padding-bottom: 30px;">
 				<ul class="like-comment">
 					<li>20  like</li>
 					<li>5  comment</li>
@@ -49,21 +49,29 @@
 				<form action="/comment" method="POST">
 					{{ csrf_field()}}
 					<textarea style="width: 100%; min-height: 50px;" placeholder="respons..." name="reply" id="reply"></textarea>
-					<input type="submit" name="submit" class="btn btn-success pull-right">
+					<input type="submit" name="submit" class="btn btn-success pull-right"  style="margin-top:10px;">
 				</form>
 			</div>
 		</div>
 
 		<section id="cd-timeline" class="cd-container">
+		@foreach($comment as $data)
+		@php 
+			$usernya = \App\User::where('id',$data->user_id)->first();
+		@endphp
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-movie">
-					<!-- <img src="{{asset('img/emot/'.$emotion->emot)}}" class="img-circle" height="100px" width:100px; alt=""> -->
+					<a href="{{url('profile/'.$usernya->username)}}">
+						<img src="{{asset('img/avatar/'.$usernya->avatar)}}" class="img-circle" height="100px" width:100px; alt="">
+					</a>
 				</div> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content">
-					<p>{{-- $comment->reply --}}</p>
+					<h5 style="font-weight: bold;">{{$usernya->username}}</h5>
+					<p>{{$data->reply}}</p>
 				</div> <!-- cd-timeline-content -->
 			</div> <!-- cd-timeline-block -->
-			</section> <!-- cd-timeline -->
+		@endforeach
+		</section> <!-- cd-timeline -->
 	</div>
 </div>
 

@@ -8,10 +8,10 @@
 
 @section('content')
 <div class="container">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12 nopadding">
         <div class="panel panel-default">
             <div class="panel-body text-center">
-                <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="150px" width="150px;" style="top:10;">
+                <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="150px" width="150px;" style="top:10; margin-bottom: 10px;">
                 <h1>{{$user->fullname}}</h1>
             <form action="{{url('profile/'.$user->id.'/edit')}}" method="POST" style="text-align: left!important;" enctype="multipart/form-data">
             {{csrf_field()}}

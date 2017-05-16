@@ -3,11 +3,11 @@ h1, h2, h3, h4{
 	font-family: 'opensans-bold';
 }
 body{
-	background-color: #fafafa;	
+	background-color: #f7f3ef;	
 	font-family: 'opensans'!important;
 }
 .navbar-default{
-	background-color: #fff;
+	background-color: #725db0;
 }
 #logo{
 	font-family: 'madita';
@@ -64,12 +64,16 @@ h3,h4{color: #d9534f!important;}
 a:link {
 text-decoration:none;
 }
+.nopadding{
+	padding: 0px;
+}
 #caption{
 	font-family: 'opensans';
 }
 	.container{
-		max-width:900px;
+		max-width:600px;
 		min-height: 100%;
+		padding: 0px;
 	}
 	.container-fluid{
 		max-width: 900px;
@@ -246,7 +250,7 @@ Modules - reusable parts of our design
 -------------------------------- */
 .cd-container {
   /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
-  width: 90%;
+  /*width: 90%;*/
   max-width: 1170px;
   margin: 0 auto;
 }
@@ -286,7 +290,7 @@ header h1 {
 
 #cd-timeline {
   position: relative;
-  padding: 2em 0;
+ /* padding: 2em 0;*/
   margin-top: 2em;
   margin-bottom: 2em;
 }
@@ -295,19 +299,19 @@ header h1 {
   content: '';
   position: absolute;
   top: 0;
-  left: 18px;
+  left: 35px;
   height: 125%;
   width: 4px;
   background: #d7e4ed;
 }
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
-    margin-top: 3em;
-    margin-bottom: 3em;
+   /* margin-top: 3em;
+    margin-bottom: 3em;*/
   }
   #cd-timeline::before {
-    /*left: 50%;*/
-    margin-left: -2px;
+    left: 5%;
+    /*margin-left: -2px;*/
   }
 }
 
@@ -352,7 +356,7 @@ header h1 {
   width: 60px;
   height: 60px;
   position: relative;
-  left: 0;
+  left: 11;
   top: 0;
  /* margin-left: -12px;
   margin-top: -12px;*/
@@ -446,11 +450,11 @@ header h1 {
 }
 .cd-timeline-content {
   position: relative;
-  margin-left: 60px;
+  margin-left: 80px;
   background: white;
   border-radius: 0.25em;
   padding: 1em;
-  box-shadow: 0 3px 0 #d7e4ed;
+  /*box-shadow: 0 3px 0 #d7e4ed;*/
 }
 .cd-timeline-content:after {
   content: "";
@@ -512,7 +516,7 @@ header h1 {
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-content {
-    margin-right: -10;
+    /*margin-right: -10;*/
     padding: 1.6em;
     /*width: 45%;*/
     
