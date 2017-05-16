@@ -6,7 +6,7 @@
     min-height: 100%; 
   }
   .comment{
-    
+
   }
   .panel-body{
     padding: 0px!important;
@@ -29,7 +29,7 @@
   }
 
 
-  @media screen and (max-width: 767px){
+  @media screen and (max-width: 1024px){
     .col-md-12, .panel-body{
       padding: 0px!important;
     }
@@ -41,19 +41,21 @@
 </style>
 
 <div class="container">
-  <div class="col-md-10 col-md-offset-1 nopadding">
-    <div class="panel panel-default" style="padding: 10px 20px;">
+  <div class="col-md-12 nopadding">
+    <div class="panel panel-default" style="padding: 25px 20px;">
       <div class="panel-body text-left">
         <div class="col-md-3 nopadding">
           <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="120px" width="120px;" style="top:10;">
         </div>
-        <div class="col-md-7 nopadding">
+        <div class="col-md-7" style="padding: 10px 0;">
           <h2>{{$user->fullname}}</h2>
           <p style="color: #aaa;">@ {{$user->username}}</p>
+          <br/>
           <p>{{$user->bio}}</p>
-          <ul class="counter">
-          <li><h4 style="color: #777">200 friends</h4></li>
-          <li><h4 style="color: #777">20 feels</h4></li>
+          <br>
+          <ul class="counter" style="top:20px;">
+            <li><h4 style="color: #777">200 friends</h4></li>
+            <li><h4 style="color: #777">20 feels</h4></li>
           </ul>
         </div>
         <div class="col-md-2 nopadding"  style="top:10px;">
@@ -65,27 +67,19 @@
       </div>
     </div>
 
-     <hr>
-
-    <div class="col-md-12">
-      <div class="panel panel-default">
-      <div class="panel-body">
-          <textarea style="width: 100%; min-height: 100px;" placeholder="What do you feel..."></textarea>
-          <button class="btn btn-primary" style="float: right;">Share</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-10 col-md-offset-1 pull-right">
-    <section id="cd-timeline" class="cd-container">
-      <div class="cd-timeline-block">
-        <div class="cd-timeline-img cd-movie">
-
-        </div> <!-- cd-timeline-img -->
-        <div class="cd-timeline-content">
-          <p>aaaa</p>
-        </div> <!-- cd-timeline-content -->
-      </div> <!-- cd-timeline-block -->
+    <hr>
+    <div class="col-md-12 nopadding">
+      <section id="cd-timeline" class="cd-container">
+      @foreach($post as $data)
+        <div class="cd-timeline-block">
+          <div class="cd-timeline-img cd-movie">
+              <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="100px" width:100px; alt="">
+          </div> <!-- cd-timeline-img -->
+          <div class="cd-timeline-content">
+            <p><a href="{{url('emotion/'.$data->id)}}">{{$data->text}}</a></p>
+          </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+        @endforeach
       </section> <!-- cd-timeline -->
     </div>
   </div>
