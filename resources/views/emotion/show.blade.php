@@ -76,7 +76,7 @@
 				<div class="cd-timeline-content">
 					@if ($data->user_id ==Auth::id())
 					<ul class="edit-delete text-right">
-					<li><form action="/comment/{{$data->comments_id}}" method="POST">
+						<li><form action="/comment/{{$data->comments_id}}" method="POST">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
 							<button class="btn btn-danger">Delete</button>
