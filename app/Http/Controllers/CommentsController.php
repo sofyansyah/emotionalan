@@ -72,13 +72,13 @@ class CommentsController extends Controller
     public function edit($id)
     {
     	$comment = Comment::join('users', 'comments.user_id', '=', 'users.id')->where('comments.id', $id)->select('comments.*','users.username')->first();
-        return view('emotion.edit', compact ('comment'));
+        return view('comments.edit', compact ('comment'));
     }
     public function update(Request $request, $id)
     {
        $comment = Comment::join('users', 'comments.user_id', '=', 'users.id')->where('comments.id', $id)->select('comments.*','users.username')->first();
-        $emotion->update($request->all());
-        return redirect ('/emotion');
+        $comment->update($request->all());
+         return redirect('/emotion');
     }
     /**
      * Remove the specified resource from storage.
@@ -89,8 +89,8 @@ class CommentsController extends Controller
     public function destroy($id)
     {
          $comment = Comment::join('users', 'comments.user_id', '=', 'users.id')->where('comments.id', $id)->select('comments.*','users.username')->first();
-         $emotion->delete();
-         return redirect ('/emotion');
+         $comment->delete();
+         return redirect()->back()->with('success','Comment anda berhasil di delete');
     }
 
 }
