@@ -69,18 +69,19 @@
 
     <hr>
     <div class="col-md-12 nopadding">
+    @foreach($post as $data)
       <section id="cd-timeline" class="cd-container">
-      @foreach($post as $data)
         <div class="cd-timeline-block">
           <div class="cd-timeline-img cd-movie">
               <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="100px" width:100px; alt="">
           </div> <!-- cd-timeline-img -->
           <div class="cd-timeline-content">
             <p><a href="{{url('emotion/'.$data->id)}}">{{$data->text}}</a></p>
+            <p>{{$data->created_at->diffForHumans()}}</p>
           </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
-        @endforeach
       </section> <!-- cd-timeline -->
+      @endforeach
     </div>
   </div>
 

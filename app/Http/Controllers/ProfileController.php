@@ -18,8 +18,8 @@ class ProfileController extends Controller
      //        ->first();
            
         $user = User::whereUsername($id)->first();
-        $post = Emotion::where('user_id',Auth::user()->id)->get();
-       
+        $post = Emotion::where('user_id',Auth::user()->id)->orderBy('id', 'desc')->get();
+      
     	return view ('user.profile', compact('user','post'));
     }
 

@@ -43,6 +43,7 @@
 					<img src="{{asset('img/emot/'.$emotion->emot)}}" width="auto;" height="auto;">
 					<h2 style="font-size:30px;margin-top: 20px!important;">{{$emotion->text}}</h2>
 					<p>{{$emotion->created_at->diffForHumans()}}</p>
+					
 				</div>
 			</div>
 			<div class="panel-footer" style="padding-bottom: 30px;">
@@ -53,16 +54,19 @@
 				<form action="/comment" method="POST">
 					{{ csrf_field()}}
 					<textarea style="width: 100%; min-height: 50px;" placeholder="respons..." name="reply" id="reply"></textarea>
+					<input type="hidden" name="id" value="{{$emotion->id}}">
+					<input type="hidden" name="status" value="1">
 					<input type="submit" name="submit" class="btn btn-success pull-right"  style="margin-top:10px;">
 				</form>
 			</div>
 		</div>
 
-		<section id="cd-timeline" class="cd-container">
 		@foreach($comment as $data)
 		@php 
 			$usernya = \App\User::where('id',$data->user_id)->first();
 		@endphp
+		<section id="cd-timeline" class="cd-container">
+		
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-movie">
 					<a href="{{url('profile/'.$usernya->username)}}">
@@ -72,10 +76,12 @@
 				<div class="cd-timeline-content">
 					<h5 style="font-weight: bold;">{{$usernya->username}}</h5>
 					<p>{{$data->reply}}</p>
+					<p></p>
 				</div> <!-- cd-timeline-content -->
 			</div> <!-- cd-timeline-block -->
-		@endforeach
+		
 		</section> <!-- cd-timeline -->
+		@endforeach
 	</div>
 </div>
 

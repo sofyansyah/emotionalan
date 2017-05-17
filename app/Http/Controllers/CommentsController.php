@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Comment;
+use App\Emotion;
+use App\User;
 use Auth;
 
 class CommentsController extends Controller
@@ -37,11 +39,13 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->All());
      $comment = new Comment;
      $comment->user_id = Auth::user()->id;
      $comment->post_id= $request->post_id;
      $comment->reply= $request->reply;
-     $comment->status= $request->status;  
+     $comment->status= $request->status; 
+      $comment->post_id= $request->id;
      $comment->save();
         // Emotion::create ($request->all());
         // Emotion::create ([
@@ -58,7 +62,7 @@ class CommentsController extends Controller
         // $emotion->emot = $fileName;
         // $emotion->save();
 
-       return redirect ('/emotion');
+       return redirect()->back()->with('success','Comment anda berhasil');
     }
     public function show($id)
     {
