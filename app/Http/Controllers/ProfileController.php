@@ -16,11 +16,13 @@ class ProfileController extends Controller
      //        join('emotions', 'users.username', '=', 'emotions.user_id')
      //        ->select('users.*', 'emotions.emot', 'emotions.text')
      //        ->first();
-           
+
         $user = User::whereUsername($id)->first();
-        $post = Emotion::where('user_id',Auth::user()->id)->orderBy('id', 'desc')->get();
-      
-    	return view ('user.profile', compact('user','post'));
+        $post = Emotion::where('user_id',Auth::user()->id)
+        ->orderBy('id', 'desc')
+        ->get();
+
+        return view ('user.profile', compact('user','post'));
     }
 
     public function edit_profile($username)
@@ -44,9 +46,9 @@ class ProfileController extends Controller
 
         if (!empty($r->foto)) {
             if ($r->hasFile('foto')) {
-                    $allowedTipe = [
-                        'jpg', 'jpeg','png','PNG'
-                    ];
+                $allowedTipe = [
+                'jpg', 'jpeg','png','PNG'
+                ];
 
                 $validFile = in_array(pathinfo($r->file('foto')->getClientOriginalName(), PATHINFO_EXTENSION), $allowedTipe);
 

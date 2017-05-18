@@ -36,14 +36,14 @@
 					</ul>
 				</div>
 				<div class="col-md-12 text-center">
-				<civ class="col-md-12 text-left">
-				<img src="{{asset('img/avatar/'.$emotion->avatar)}}" class="img-circle" width="35;" height="35;">
-					{{$emotion->username}}
+					<civ class="col-md-12 text-left">
+						<img src="{{asset('img/avatar/'.$emotion->avatar)}}" class="img-circle" width="35;" height="35;">
+						{{$emotion->username}}
 					</civ>
 					<img src="{{asset('img/emot/'.$emotion->emot)}}" width="auto;" height="auto;">
 					<h2 style="font-size:30px;margin-top: 20px!important;">{{$emotion->text}}</h2>
 					<p>{{$emotion->created_at->diffForHumans()}}</p>
-					
+
 				</div>
 			</div>
 			<div class="panel-footer" style="padding-bottom: 30px;">
@@ -63,10 +63,10 @@
 
 		@foreach($comment as $data)
 		@php 
-			$usernya = \App\User::where('id',$data->user_id)->first();
+		$usernya = \App\User::where('id',$data->user_id)->first();
 		@endphp
 		<section id="cd-timeline" class="cd-container">
-		
+
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-movie">
 					<a href="{{url('profile/'.$usernya->username)}}">
@@ -74,17 +74,26 @@
 					</a>
 				</div> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content">
-					<h5 style="font-weight: bold;">{{$usernya->username}}</h5>
-					<p>{{$data->reply}}</p>
-					<p></p>
-				</div> <!-- cd-timeline-content -->
-			</div> <!-- cd-timeline-block -->
-		
-		</section> <!-- cd-timeline -->
-		@endforeach
+					@if ($data->user_id ==Auth::id())
+					<ul class="edit-delete text-right">
+						<li><form action="/comment/{{$data->comments_id}}" method="POST">
+							{{ csrf_field() }}
+							{{ method_field('DELETE') }}
+							<button class="btn btn-danger" style="background-color: #f9f9f9; border:none; color:#666;padding: 0px;font-size: 16px;">Delete</button>
+						</form></li>
+						<li><a href="/comment/{{$data->comments_id}}/edit">Edit</a></li></ul>
+						@endif
+						<h4>{{$usernya->username}}</h4>
+						<p>{{$data->reply}}</p>
+						<p></p>
+					</div> <!-- cd-timeline-content -->
+				</div> <!-- cd-timeline-block -->
+
+			</section> <!-- cd-timeline -->
+			@endforeach
+		</div>
 	</div>
-</div>
 
 
 
-@endsection
+	@endsection

@@ -47,3 +47,17 @@ font-face {
   font-weight: 400;
   src: url('../fonts/helvetica-bold.otf');
 }
+
+@font-face {
+  font-family: 'sanfrancisco';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/SanFranciscoText-Regular.otf');
+}
+
+@font-face {
+  font-family: 'sanfrancisco-bold';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../fonts/SanFranciscoText-Bold.otf');
+}
