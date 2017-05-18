@@ -26,12 +26,12 @@
 				<div class="col-md-12">
 					@if ($emotion->user_id ==Auth::id())
 					<ul class="edit-delete text-right">
-						<li><form action="/emotion/{{$emotion->id}}" method="POST">
+						<li><form action="emotion/{{$emotion->id}}" method="POST">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
 							<button class="btn btn-danger">Delete</button>
 						</form></li>
-						<li><a href="/emotion/{{$emotion->id}}/edit" class="btn btn-warning">Edit</a></li>
+						<li><a href="emotion/{{$emotion->id}}/edit" class="btn btn-warning">Edit</a></li>
 						@endif
 					</ul>
 				</div>
@@ -51,7 +51,7 @@
 					<li>20  like</li>
 					<li>5  comment</li>
 				</ul>
-				<form action="/comment" method="POST">
+				<form action="/emotionalan/public/comment" method="POST">
 					{{ csrf_field()}}
 					<textarea style="width: 100%; min-height: 50px;" placeholder="respons..." name="reply" id="reply"></textarea>
 					<input type="hidden" name="id" value="{{$emotion->id}}">
@@ -76,12 +76,12 @@
 				<div class="cd-timeline-content">
 					@if ($data->user_id ==Auth::id())
 					<ul class="edit-delete text-right">
-						<li><form action="/comment/{{$data->comments_id}}" method="POST">
+						<li><form action="/emotionalan/public/comment/{{$data->comments_id}}" method="POST">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
 							<button class="btn btn-danger" style="background-color: #f9f9f9; border:none; color:#666;padding: 0px;font-size: 16px;">Delete</button>
 						</form></li>
-						<li><a href="/comment/{{$data->comments_id}}/edit">Edit</a></li></ul>
+						<li><a href="/emotionalan/public/comment/{{$data->comments_id}}/edit">Edit</a></li></ul>
 						@endif
 						<h4>{{$usernya->username}}</h4>
 						<p>{{$data->reply}}</p>
