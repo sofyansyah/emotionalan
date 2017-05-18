@@ -3,12 +3,12 @@ h1, h2, h3, h4{
 	font-family: 'sanfrancisco-bold';
 }
 body{
-	background-color: #f5f5f5;
-  background-image: url("https://i.servimg.com/u/f72/17/19/90/23/backgr10.png");	
+	background-color: #f5f5f5;	
 	font-family: 'sanfrancisco'!important;
 }
 .navbar-default{
-	background-color: #725db0;
+	background-color: #fff;
+  border-bottom: 1px solid #ccc;
 }
 #logo{
 	font-family: 'madita';
@@ -294,9 +294,11 @@ header h1 {
  /* padding: 2em 0;*/
   margin-top: 15px;
   margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0;
 }
-#cd-timeline::before {
-  /* this is the vertical line */
+/*#cd-timeline::before {
   content: '';
   position: absolute;
   top: 0;
@@ -304,7 +306,7 @@ header h1 {
   height: 125%;
   width: 4px;
   background: #d7e4ed;
-}
+}*/
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
    /* margin-top: 3em;
@@ -451,11 +453,6 @@ header h1 {
 }
 .cd-timeline-content {
 position: relative;
-margin-left: 80px;
-box-shadow: inset 0px 1px 0px 0px #ffffff;
-background-color: #f9f9f9;
-border-radius: 10px;
-border: 1px solid #dcdcdc;
 }
 .cd-timeline-content:after {
   content: "";
