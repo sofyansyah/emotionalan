@@ -20,7 +20,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/emotion') }}">
-                    <img src="{{asset('img/logo.svg')}}" height="30px;" ;>
+                    <img src="{{asset('img/logo.svg')}}" height="24px;" ;>
                 </a>
             </div>
 
@@ -40,7 +40,7 @@
                             <!-- <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li> -->
                             @else
-                            <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="25px"></a></li>
+                            <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li>
                             <li><a href="#"><img src="{{asset('/img/img/notif.svg')}}" height="25px"></a></li>
 
                             <li class="dropdown">

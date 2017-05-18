@@ -12,7 +12,7 @@
 		<div class="panel panel-default">
 			
 			<div class="panel-body" style="padding-top: 40px!important;">
-				<form action="/emotion" method="POST" enctype="multipart/form-data">
+				<form action="/emotionalan/public/emotion" method="POST" enctype="multipart/form-data">
 					{{ csrf_field()}}
 					<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 					<div class="form-group">
