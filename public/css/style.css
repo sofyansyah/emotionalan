@@ -1,18 +1,17 @@
 
 h1, h2, h3, h4{
 	font-family: 'sanfrancisco-bold';
+  color: #333;
 }
 body{
-	background-color: #f5f5f5;	
+	background-color: #f4f4f4;	
 	font-family: 'opensans'!important;
-	background-color: #f5f5f5;
-  background-image: url("https://i.servimg.com/u/f72/17/19/90/23/backgr10.png");	
 	font-family: 'sanfrancisco'!important;
 
 }
 .navbar-default{
 	background-color: #fff;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
 }
 #logo{
 	font-family: 'madita';
@@ -311,6 +310,11 @@ header h1 {
   width: 4px;
   background: #d7e4ed;
 }*/
+.feelmotion {
+  position: absolute;
+  right: -7px;
+  top: 30px;
+}
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
    /* margin-top: 3em;
@@ -324,7 +328,7 @@ header h1 {
 
 .cd-timeline-block {
   position: relative;
-  margin: 2em 0;
+  margin: 15px !important;
 }
 .cd-timeline-block:after {
   content: "";
@@ -363,10 +367,9 @@ header h1 {
   width: 48px;
   height: 48px;
   position: relative;
-  left: 11;
+  left: 0;
   top: 0;
- /* margin-left: -12px;
-  margin-top: -12px;*/
+  margin: 10px;
 }
 .cd-timeline-img.cd-picture {
   background: #75ce66;
@@ -382,7 +385,7 @@ header h1 {
     width: 60px;
     height: 60px;
     /*left: 50%;*/
-    margin-left: -11px;
+    /*margin-left: -11px;*/
     /* Force Hardware Acceleration in WebKit */
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
@@ -476,6 +479,7 @@ position: relative;
 .cd-timeline-content p {
   margin: 1em 0;
   line-height: 1.6;
+  color: #333;
 }
 .cd-timeline-content .cd-read-more {
   float: right;
@@ -509,7 +513,6 @@ position: relative;
   }
   .cd-timeline-content p {
     font-size: 16px;
-    font-size: 1rem;
   }
   .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     font-size: 14px;
@@ -519,7 +522,7 @@ position: relative;
 @media only screen and (min-width: 1170px) {
   .cd-timeline-content {
     /*margin-right: -10;*/
-    padding: 15px;
+    padding: 0;
     /*width: 45%;*/
     
   }

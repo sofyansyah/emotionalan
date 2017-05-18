@@ -25,31 +25,33 @@
 </style>
 
 <div class="container">     
-	
-	
 	<div class="col-md-12 nopadding">
-		<textarea style="width: 100%; height:100px; border:none;"></textarea>
+		<textarea style="width: 100%; height:100px; border:none;" placeholder="What do you feel?"></textarea>
 		@forelse( $emotions as $feels )
 		{{-- @if ($emotion->user_id ==Auth::id()) --}}
 
 		<section id="cd-timeline" class="cd-container">
-			<div class="cd-timeline-block">
-				<div class="cd-timeline-img cd-movie">
-					<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="img-rounded" height="100px" width="100px;" alt="">
-				</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-block"> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content">
+				<div class="col-md-1 nopadding">
+					<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="img-rounded" height="47px" width="47px;" alt="">
+							<img src="{{asset('img/emot/'.$feels->emot)}}" class="feelmotion img-circle" height="24px" width="24px;" alt="">
+				</div>
+				<div class="col-md-10 nopadding">
 					<a href={{url('emotion/'.$feels->id)}}>
-						<div class="col-md-2">
-							<img src="{{asset('img/emot/'.$feels->emot)}}" class="img-circle" height="24px" width="24px;" alt=""></div>
-							<div class="col-md-10">
-								<h4>@ {{ $feels->username }}</h4>
-							</div>
-							<div class="col-md-12">
-								<p>{{$feels->text}}</p></div></a>
-							</div> <!-- cd-timeline-content -->
-							<p class="emotdate"> {{$feels->created_at->diffForHumans()}}</p>
+							<div class="col-md-9">
+								<h6>{{ $feels->username }}</h6>
+							</div><!-- cd-timeline-content -->
 						</div> <!-- cd-timeline-block -->
 
+							<div class="col-md-12 nopadding">
+								<p>{{$feels->text}}</p></div></a>
+							</div> 
+							<hr style="margin: 10px -15px;">
+							<div class="col-md-12 nopadding">
+							<p class="emotdate"> {{$feels->created_at->diffForHumans()}}</p>
+							</div>
+						</div>
 
 					</section> <!-- cd-timeline -->
 
