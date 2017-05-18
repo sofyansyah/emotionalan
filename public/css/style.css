@@ -3,8 +3,7 @@ h1, h2, h3, h4{
 	font-family: 'opensans-bold';
 }
 body{
-	background-color: #f5f5f5;
-  background-image: url("https://i.servimg.com/u/f72/17/19/90/23/backgr10.png");	
+	background-color: #f5f5f5;	
 	font-family: 'opensans'!important;
 }
 .navbar-default{
