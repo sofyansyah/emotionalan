@@ -79,11 +79,11 @@
 						<li><form action="/comment/{{$data->comments_id}}" method="POST">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
-							<button class="btn btn-danger">Delete</button>
+							<button class="btn btn-danger" style="background-color: #f9f9f9; border:none; color:#666;padding: 0px;font-size: 16px;">Delete</button>
 						</form></li>
-						<li><a href="/comment/{{$data->comments_id}}/edit" class="btn btn-warning">Edit</a></li>
+						<li><a href="/comment/{{$data->comments_id}}/edit">Edit</a></li></ul>
 						@endif
-						<h5 style="font-weight: bold;">{{$usernya->username}}</h5>
+						<h4>{{$usernya->username}}</h4>
 						<p>{{$data->reply}}</p>
 						<p></p>
 					</div> <!-- cd-timeline-content -->

@@ -1,11 +1,11 @@
 
 h1, h2, h3, h4{
-	font-family: 'opensans-bold';
+	font-family: 'sanfrancisco-bold';
 }
 body{
 	background-color: #f5f5f5;
   background-image: url("https://i.servimg.com/u/f72/17/19/90/23/backgr10.png");	
-	font-family: 'opensans'!important;
+	font-family: 'sanfrancisco'!important;
 }
 .navbar-default{
 	background-color: #725db0;
@@ -13,7 +13,7 @@ body{
 #logo{
 	font-family: 'madita';
 }
-p, a {font-family: 'helvetica';}
+p, a {font-family: 'sanfrancisco-regular';}
 .panel-default{
 	border: 1px solid #eee;
 	background-color: #fff;
