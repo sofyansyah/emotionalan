@@ -18,13 +18,9 @@
 		float: right!important;
 	}
 	.emotdate{
-		text-align: center;
+		color: #999;
 		font-size: 10px; 
 		padding: 5px; 
-		background-color: #f1c40f; 
-		margin-top: 10px; 
-		margin-right: -18px;
-		border-radius: 5px;"
 	}
 </style>
 
@@ -39,19 +35,19 @@
 		<section id="cd-timeline" class="cd-container">
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-movie">
-					<img src="{{asset('img/emot/'.$feels->emot)}}" class="img-circle" height="100px" width="100px;" alt="">
-					<p class="emotdate"> {{$feels->created_at->diffForHumans()}}</p>
+					<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="img-rounded" height="100px" width="100px;" alt="">
 				</div> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content">
 					<a href={{url('emotion/'.$feels->id)}}>
 						<div class="col-md-2">
-							<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="img-circle" height="40px" width="40px;" alt=""></div>
+							<img src="{{asset('img/emot/'.$feels->emot)}}" class="img-circle" height="24px" width="24px;" alt=""></div>
 							<div class="col-md-10">
 								<h4>@ {{ $feels->username }}</h4>
 							</div>
 							<div class="col-md-12">
 								<p>{{$feels->text}}</p></div></a>
 							</div> <!-- cd-timeline-content -->
+							<p class="emotdate"> {{$feels->created_at->diffForHumans()}}</p>
 						</div> <!-- cd-timeline-block -->
 
 
