@@ -26,7 +26,21 @@
 
 <div class="container">     
 	<div class="col-md-12 nopadding">
-		<textarea style="width: 100%; height:100px; border:none;" placeholder="What do you feel?"></textarea>
+		<form action="/home" method="POST" enctype="multipart/form-data" style="margin-bottom: 100px;">
+					{{ csrf_field()}}
+					<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+					<div class="form-group">
+						
+						<textarea class="form-control" rows="5" id="text" placeholder="Your Feel" name="text"></textarea>
+					</div>
+					<div class="form-group">
+						
+						<input type="file" id="emot" placeholder="Emot" name="emot">
+						<input type="hidden" value="{{ 'csrf_token' }}" name="token">
+					</div>
+					<input type="submit" name="submit" class="btn btn-success pull-right">
+					</form>
+
 		@forelse( $emotions as $feels )
 		{{-- @if ($emotion->user_id ==Auth::id()) --}}
 
