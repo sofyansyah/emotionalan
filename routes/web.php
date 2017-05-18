@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('comment', 'CommentsController');
+Route::resource('emoticon', 'EmoticonsController');
 Route::resource('emotion', 'EmotionsController');
 Route::get('profile/{username}', 'ProfileController@profile');
 Route::resource('home/', 'EmotionsController');
