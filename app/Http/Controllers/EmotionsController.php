@@ -18,7 +18,7 @@ class EmotionsController extends Controller
     public function index()
     {
         $emotions = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
-        ->select('emotions.*','users.username', 'users.avatar')
+        ->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
         ->orderBy('id', 'desc')
         ->get();
         $join = User::join('comments','users.id','=','comments.user_id')
