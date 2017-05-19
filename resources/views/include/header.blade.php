@@ -17,11 +17,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
+                 @if (Auth::guest())
                 <!-- Branding Image -->
+                <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/') }}">
+                    <img src="{{asset('img/logo.svg')}}" height="24px;" ;>
+                </a>
+                @else
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/emotion') }}">
                     <img src="{{asset('img/logo.svg')}}" height="24px;" ;>
                 </a>
+                @endif
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
