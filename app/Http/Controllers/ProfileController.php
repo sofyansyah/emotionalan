@@ -7,6 +7,7 @@ use Hash;
 use App\User;
 use App\Emotion;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -21,6 +22,8 @@ class ProfileController extends Controller
         $post = Emotion::where('user_id',Auth::user()->id)
         ->orderBy('id', 'desc')
         ->get();
+
+        // DB::table('emotions')->groupBy('user_id')->count();
 
         return view ('user.profile', compact('user','post'));
     }
