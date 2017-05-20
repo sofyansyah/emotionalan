@@ -16,7 +16,7 @@
 <div class="container">
   <div class="col-md-12 nopadding">
     @if($results->count())
-    <div class="jumbotron text-center"><h1 style="font-size: 30px; margin-bottom: :20px;">Result for {{$query}}</h1></div>
+    <div class="jumbotron text-center"><h1 style="font-size: 30px; margin-bottom: :20px;">Result {{$results->count()}} user for {{$query}}</h1></div>
     @foreach($results as $user)
     <div class="col-md-6 col-sm-12 col-xs-12">
       <div class="panel panel-default nopadding">
