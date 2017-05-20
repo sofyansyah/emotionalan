@@ -226,9 +226,7 @@ text-decoration:none;
 	.visible {display:block;}
 
 	/* -------------------------------- 
-
 Primary style
-
 -------------------------------- */
 html * {
   /*-webkit-font-smoothing: antialiased;
@@ -248,13 +246,11 @@ img {
 
 
 /* -------------------------------- 
-
 Modules - reusable parts of our design
-
 -------------------------------- */
 .cd-container {
   /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
-  /*width: 90%;*/
+  width: 90%;
   max-width: 1170px;
   margin: 0 auto;
 }
@@ -266,9 +262,7 @@ Modules - reusable parts of our design
 }
 
 /* -------------------------------- 
-
 Main components 
-
 -------------------------------- */
 header {
   height: 200px;
@@ -294,41 +288,34 @@ header h1 {
 
 #cd-timeline {
   position: relative;
- /* padding: 2em 0;*/
-  margin-top: 15px;
-  margin-bottom: 15px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 0;
+  /*padding: 2em 0;*/
+  /*margin-top: 2em;*/
+  margin-bottom: 2em;
 }
-/*#cd-timeline::before {
+#cd-timeline::before {
+  /* this is the vertical line */
   content: '';
   position: absolute;
   top: 0;
-  left: 35px;
+  left: 18px;
   height: 125%;
   width: 4px;
   background: #d7e4ed;
-}*/
-.feelmotion {
-  position: absolute;
-  right: -7px;
-  top: 30px;
 }
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
-   /* margin-top: 3em;
+    /*margin-top: 3em;
     margin-bottom: 3em;*/
   }
   #cd-timeline::before {
-    left: 5%;
-    /*margin-left: -2px;*/
+    /*left: 50%;*/
+    margin-left: -2px;
   }
 }
 
 .cd-timeline-block {
   position: relative;
-  margin: 15px !important;
+  margin: 2em 0;
 }
 .cd-timeline-block:after {
   content: "";
@@ -364,12 +351,13 @@ header h1 {
 }
 .cd-timeline-img img {
   display: block;
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   position: relative;
   left: 0;
   top: 0;
-  margin: 10px;
+ /* margin-left: -12px;
+  margin-top: -12px;*/
 }
 .cd-timeline-img.cd-picture {
   background: #75ce66;
@@ -385,7 +373,7 @@ header h1 {
     width: 60px;
     height: 60px;
     /*left: 50%;*/
-    /*margin-left: -11px;*/
+    margin-left: -11px;
     /* Force Hardware Acceleration in WebKit */
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
@@ -459,7 +447,12 @@ header h1 {
   }
 }
 .cd-timeline-content {
-position: relative;
+  position: relative;
+  margin-left: 60px;
+  background: white;
+  border-radius: 0.25em;
+  padding: 1em;
+  box-shadow: 0 3px 0 #d7e4ed;
 }
 .cd-timeline-content:after {
   content: "";
@@ -479,7 +472,6 @@ position: relative;
 .cd-timeline-content p {
   margin: 1em 0;
   line-height: 1.6;
-  color: #333;
 }
 .cd-timeline-content .cd-read-more {
   float: right;
@@ -496,7 +488,7 @@ position: relative;
   padding: .8em 0;
   opacity: .7;
 }
-/*.cd-timeline-content::before {
+.cd-timeline-content::before {
   content: '';
   position: absolute;
   top: 16px;
@@ -504,8 +496,8 @@ position: relative;
   height: 0;
   width: 0;
   border: 7px solid transparent;
-  border-right: 7px solid #f9f9f9;
-}*/
+  border-right: 7px solid white;
+}
 @media only screen and (min-width: 768px) {
   .cd-timeline-content h2 {
     font-size: 20px;
@@ -513,6 +505,7 @@ position: relative;
   }
   .cd-timeline-content p {
     font-size: 16px;
+    font-size: 1rem;
   }
   .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     font-size: 14px;
@@ -521,8 +514,8 @@ position: relative;
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-content {
-    /*margin-right: -10;*/
-    padding: 0;
+    margin-right: -10;
+    padding: 1.6em;
     /*width: 45%;*/
     
   }

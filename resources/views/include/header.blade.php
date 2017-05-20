@@ -51,7 +51,7 @@
                                     <input type="text" id="searching_for" class="form-control">
                                 </div>
                             </li>
-                            <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li>
+                            <!-- <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li> -->
                             <li><a href="#"><img src="{{asset('/img/img/notif.svg')}}" height="25px"></a></li>
 
                             <li class="dropdown">
