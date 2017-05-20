@@ -24,5 +24,7 @@ Route::resource('emotion', 'EmotionsController');
 Route::get('profile/{username}', 'ProfileController@profile');
 Route::resource('home/', 'EmotionsController');
 Route::resource('posts', 'PostsController');
+Route::get('/search/{query?}', ['as' => 'search', 'uses' => 'SearchController@search']);
 Route::get('profile/{username}/edit', 'ProfileController@edit_profile');
 Route::post('profile/{id}/edit', 'ProfileController@post_profile');
+

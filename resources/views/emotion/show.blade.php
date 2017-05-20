@@ -26,7 +26,7 @@
 				<div class="col-md-12">
 					@if ($emotion->user_id ==Auth::id())
 					<ul class="edit-delete text-right">
-						<li><form action="/emotion/{{$emotion->id}}" method="POST">
+						<li><form action="{{url('/emotion/'.$emotion->id) }}" method="POST">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
 							<button class="btn btn-danger">Delete</button>
@@ -51,7 +51,7 @@
 					<li>20  like</li>
 					<li>5  comment</li>
 				</ul>
-				<form action="/comment" method="POST">
+				<form action="{{url('comment')}}" method="POST">
 					{{ csrf_field()}}
 					<textarea style="width: 100%; min-height: 50px;" placeholder="respons..." name="reply" id="reply"></textarea>
 					<input type="hidden" name="id" value="{{$emotion->id}}">

@@ -68,8 +68,10 @@
     </div>
 
     <hr>
+    {{$post->count()}} feels
     <div class="col-md-12 nopadding">
       @foreach($post as $data)
+
       <section id="cd-timeline" class="cd-container">
         <div class="cd-timeline-block">
           <div class="cd-timeline-img cd-movie">

@@ -69,7 +69,7 @@ a:link {
 text-decoration:none;
 }
 .nopadding{
-	padding: 0px;
+	padding: 0px!important;
 }
 #caption{
 	font-family: 'opensans';

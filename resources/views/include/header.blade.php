@@ -34,6 +34,11 @@
                     <ul class="nav navbar-nav">
                         <!-- <li><a href="#">Explore</a></li>
                         <li><a href="#">Event</a></li> -->
+                        <li>
+                            <div class="form-group" style="margin-top: 10px;">
+                            <input type="text" id="searching_for" class="form-control">
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -79,4 +84,14 @@
         @yield('js')
         <!-- Scripts -->
         <script src="{{asset('js/app.js')}}"></script>
+        <script>
+        var search_bar = $('#searching_for');
+        search_bar.on('keypress', function(e){
+            if(e.which==13)
+            {
+                if(search_bar.val() != "")
+                    window.location = "/search/"+encodeURIComponent(search_bar.val());
+            }
+        });
+        </script>
 
