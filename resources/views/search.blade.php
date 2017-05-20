@@ -21,8 +21,8 @@
     <div class="col-md-6 col-sm-12 col-xs-12">
       <div class="panel panel-default nopadding">
         <div class="panel-body" style="padding: 10px!important;">
-          <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-rounded" height="100px" width="100px;" alt="" style="float: left; margin-right: 10px;">
-          <div class="details" style="padding: 0 0 5px;">
+          <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="100px" width="100px;" alt="" style="float: left; margin-right: 10px;">
+          <div class="details" style="padding: 0 0 20px;">
           <a href="{{url('profile/'.$user->username)}}">
             <h1>{{$user->fullname}}</h1>
             <p>@ {{$user->username}}</p></a>

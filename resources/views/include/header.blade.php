@@ -48,7 +48,7 @@
                             @else
                             <li>
                                 <div class="form-group" style="margin-top: 10px;">
-                                    <input type="text" id="searching_for" class="form-control">
+                                    <input type="text" id="searching_for" class="form-control" placeholder="search...">
                                 </div>
                             </li>
                             <!-- <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li> -->
