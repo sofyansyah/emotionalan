@@ -12,7 +12,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Edit Comment</div>
       <div class="panel-body">
-        <form action="/comment/{{$comment->id}}" method="POST">
+        <form action="{{url('/comment/'.$comment->id)}}" method="POST">
 
           {{ method_field('PUT')}}
           {{ csrf_field()}}
