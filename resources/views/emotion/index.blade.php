@@ -27,11 +27,9 @@
 					{{ csrf_field()}}
 					<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 					<div class="form-group">
-						
 						<textarea class="form-control" rows="5" id="text" placeholder="Your Feel" name="text"></textarea>
 					</div>
 					<div class="form-group">
-						
 						<input type="file" id="emot" placeholder="Emot" name="emot">
 						<input type="hidden" value="{{ 'csrf_token' }}" name="token">
 					</div>
