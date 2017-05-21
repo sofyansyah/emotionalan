@@ -45,7 +45,7 @@
 		@forelse( $emotions as $feels )
 		{{-- @if ($emotion->user_id ==Auth::id()) --}}
 
-		<section id="cd-timeline" class="cd-container" style="display: none;">
+		<section id="cd-timeline" class="cd-container">
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-movie">
 					<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="img-rounded" height="100px" width="100px;" alt="">
