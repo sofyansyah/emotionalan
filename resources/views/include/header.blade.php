@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                 @if (Auth::guest())
+                @if (Auth::guest())
                 <!-- Branding Image -->
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/') }}">
                     <img src="{{asset('img/logo.svg')}}" height="24px;" ;>
@@ -31,14 +31,10 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
                         <!-- <li><a href="#">Explore</a></li>
                         <li><a href="#">Event</a></li> -->
-                        <li>
-                            <div class="form-group" style="margin-top: 10px;">
-                            <input type="text" id="searching_for" class="form-control">
-                            </div>
-                        </li>
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,48 +46,53 @@
                             <!-- <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li> -->
                             @else
-                            <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li>
+                            <li>
+                                <div class="form-group" style="margin-top: 10px;">
+                                    <input type="text" id="searching_for" class="form-control" placeholder="search...">
+                                </div>
+                            </li>
+                            <!-- <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li> -->
                             <li><a href="#"><img src="{{asset('/img/img/notif.svg')}}" height="25px"></a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="28px" width="28px">
+                                    <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="28px" width="28px">
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{url('/profile')}}/{{Auth::user()->username}}">Profile</a></li>
                                    <!--  <li><a href="{{url('communitys/create')}}">Create</a></li>
-                                    <li><a href="{{url('communitys')}}">Feeds</a></li> -->
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
+                                   <li><a href="{{url('communitys')}}">Feeds</a></li> -->
+                                   <li>
+                                    <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
 
-                        @endif
-                    </ul>
-                </div>
+                    @endif
+                </ul>
             </div>
-        </nav>
-        @yield('js')
-        <!-- Scripts -->
-        <script src="{{asset('js/app.js')}}"></script>
-        <script>
+        </div>
+    </nav>
+    @yield('js')
+    <!-- Scripts -->
+    <script src="{{asset('js/app.js')}}"></script>
+    <script>
         var search_bar = $('#searching_for');
         search_bar.on('keypress', function(e){
             if(e.which==13)
             {
                 if(search_bar.val() != "")
-                    window.location = "/search/"+encodeURIComponent(search_bar.val());
+                    window.location = "{{url('/search/')}}/" +encodeURIComponent(search_bar.val());
             }
         });
-        </script>
+    </script>
 

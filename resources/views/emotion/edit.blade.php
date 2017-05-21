@@ -12,7 +12,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Edit Emotion</div>
 			<div class="panel-body">
-				<form action="/emotion/{{$emotion->id}}" method="POST">
+				<form action="{{url('/emotion/' .$emotion->id) }}" method="POST">
 
 					{{ method_field('PUT')}}
 					{{ csrf_field()}}

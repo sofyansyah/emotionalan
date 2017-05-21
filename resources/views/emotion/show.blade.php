@@ -31,7 +31,7 @@
 							{{ method_field('DELETE') }}
 							<button class="btn btn-danger">Delete</button>
 						</form></li>
-						<li><a href="/emotion/{{$emotion->id}}/edit" class="btn btn-warning">Edit</a></li>
+						<li><a href="{{url('/emotion/'. $emotion->id. '/edit')}}" class="btn btn-warning">Edit</a></li>
 						@endif
 					</ul>
 				</div>
@@ -76,12 +76,12 @@
 				<div class="cd-timeline-content">
 					@if ($data->user_id ==Auth::id())
 					<ul class="edit-delete text-right">
-						<li><form action="/comment/{{$data->comments_id}}" method="POST">
+						<li><form action="{{url('/comment/'. $data->comments_id)}}" method="POST">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
 							<button class="btn btn-danger" style="background-color: #f9f9f9; border:none; color:#666;padding: 0px;font-size: 16px;">Delete</button>
 						</form></li>
-						<li><a href="/comment/{{$data->comments_id}}/edit">Edit</a></li></ul>
+						<li><a href="{{url('/comment/'. $data->comments_id. '/edit')}}">Edit</a></li></ul>
 						@endif
 						<h4>{{$usernya->username}}</h4>
 						<p>{{$data->reply}}</p>
