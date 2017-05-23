@@ -90,7 +90,7 @@ class CommentsController extends Controller
         ->select('comments.*','users.username')
         ->first();
          $comment->update($request->all());
-         return redirect('/emotion');
+         return redirect('emotion/'. $comment->post_id);
     }
     /**
      * Remove the specified resource from storage.

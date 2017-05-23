@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+    'client_id' => '1272286999557082',
+    'client_secret' => '1e3be2b6a5c414ba54546ed5af5722d9',
+    'redirect' => 'emotionalan.dev/facebook-login',
+],
+
 ];

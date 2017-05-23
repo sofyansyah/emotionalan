@@ -1,3 +1,11 @@
+<style type="text/css">
+    
+    .dropdown > img{
+        background: url("image/agita.png");;
+    }
+</style>
+
+
 
 <!-- Scripts -->
 <script>
@@ -20,11 +28,11 @@
                 @if (Auth::guest())
                 <!-- Branding Image -->
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/') }}">
-                    <img src="{{asset('img/logo.svg')}}" height="24px;" ;>
+                    <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
                 </a>
                 @else
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/emotion') }}">
-                    <img src="{{asset('img/logo.svg')}}" height="24px;" ;>
+                   <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
                 </a>
                 @endif
             </div>
