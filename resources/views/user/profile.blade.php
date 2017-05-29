@@ -61,15 +61,18 @@
         <div class="col-md-2 nopadding"  style="top:10px;">
           <ul class="button-edit"">
             <li><a class="btn btn-info" style="margin-bottom: 5px; width: 100%;">+ Add</a></li>
+            @if ($user->id == Auth::id())
             <li><a href="{{url('profile/'.$user->username.'/edit')}}" class="btn btn-warning" style="width: 100%;">Edit</a></li>
+            @endif
           </ul>
         </div>
       </div>
     </div>
 
     <hr>
-    {{$post->count()}} feels
+   
     <div class="col-md-12 nopadding">
+    
       @foreach($post as $data)
 
       <section id="cd-timeline" class="cd-container">
@@ -79,7 +82,6 @@
           </div> <!-- cd-timeline-img -->
           <div class="cd-timeline-content">
             <p><a href="{{url('emotion/'.$data->id)}}">{{$data->text}}</a></p>
-            <p>{{$data->created_at->diffForHumans()}}</p>
           </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
       </section> <!-- cd-timeline -->
