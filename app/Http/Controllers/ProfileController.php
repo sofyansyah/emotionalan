@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Hash;
 use App\User;
+use App\Follow;
 use App\Emotion;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,9 +24,11 @@ class ProfileController extends Controller
         ->orderBy('id', 'desc')
         ->get();
 
+        $follow = Follow::where('user_id',Auth::user()->id)->where('id_userfollow',$user->id)->first();
+
         // DB::table('emotions')->groupBy('user_id')->count();
 
-        return view ('user.profile', compact('user','post'));
+        return view ('user.profile', compact('user','post','follow'));
     }
 
     public function edit_profile($username)
@@ -71,7 +74,23 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->back()->with('success','Berhasil edit profile anda');
+    }
 
+    public function follow($username)
+    {
+        $user = User::whereUsername($username)->first();
+        $follow = new Follow;
+        $follow->user_id        = Auth::user()->id;
+        $follow->id_userfollow  = $user->id;
+        $follow->save();
 
+        return redirect()->back()->with('success','Berhasil Follow '.$username);
+    }
+    public function unfollow($id)
+    {
+        $follow = Follow::findOrFail($id);
+        $follow->delete();
+
+        return redirect()->back()->with('success','Berhasil UnFollow ');
     }
 }

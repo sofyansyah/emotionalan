@@ -40,8 +40,11 @@
   }
 </style>
 
+
+
 <div class="container">
   <div class="col-md-12 nopadding">
+  @include('include.alert')
     <div class="panel panel-default" style="padding: 25px 20px;">
       <div class="panel-body text-left">
         <div class="col-md-3 nopadding">
@@ -60,9 +63,19 @@
         </div>
         <div class="col-md-2 nopadding"  style="top:10px;">
           <ul class="button-edit"">
-            <li><a class="btn btn-info" style="margin-bottom: 5px; width: 100%;">+ Add</a></li>
+
+            <li>
+            @if(count($follow) > 0)
+              <a href="{{url('unfollow/'.$follow->id)}}" class="btn btn-success" style="margin-bottom: 5px; width: 100%;"> Followed </a>
+            @else
+              <a href="{{url('follow/'.$user->username)}}" class="btn btn-info" style="margin-bottom: 5px; width: 100%;">+ Add</a>
+            @endif
+            </li>
+
             @if ($user->id == Auth::id())
-            <li><a href="{{url('profile/'.$user->username.'/edit')}}" class="btn btn-warning" style="width: 100%;">Edit</a></li>
+            <li>
+              <a href="{{url('profile/'.$user->username.'/edit')}}" class="btn btn-warning" style="width: 100%;">Edit</a>
+            </li>
             @endif
           </ul>
         </div>
