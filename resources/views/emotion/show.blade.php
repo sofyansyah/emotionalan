@@ -53,7 +53,7 @@
 			<li><a href="{{ url('/login') }}">Login</a></li>
 			<!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
 			@else
-			<li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Post a feel</button>
+			<li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="width: 100%;">Posting</button>
 			</li>
 			<li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="24px" width="24px" style="float: left; margin: -4 5px 0 0;">
 				<a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
@@ -121,7 +121,7 @@
 			</div>
 
 			<div class="col-md-12 text-center">
-				<img src="{{asset('img/emot/'.$emotion->emot)}}" width="100" style="margin-bottom: 20px;">
+				<img src="{{asset('img/emot/'.$emotion->emot)}}" width="auto" style="margin-bottom: 20px;">
 				@if ($emotion->user_id ==Auth::id())
 				<div class="dropdown pull-right">
 					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="border: none;">...

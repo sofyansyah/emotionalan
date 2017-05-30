@@ -37,6 +37,10 @@
   p{
     padding: 5px;
   }
+  .counter li{
+    display: inline-block;
+    padding: 10px;
+  }
   text-area{
 
 
@@ -54,7 +58,7 @@
       <li><a href="{{ url('/login') }}">Login</a></li>
       <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
       @else
-      <li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Post a feel</button>
+      <li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="width: 100%">Posting</button>
       </li>
       <li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="24px" width="24px" style="float: left; margin: -4 5px 0 0;">
         <a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
@@ -113,7 +117,7 @@
     <div class="panel panel-default" style="padding: 25px 20px;">
       <div class="panel-body text-left">
         <div class="col-md-3 nopadding">
-          <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="120px" width="120px;" style="top:10;">
+          <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="100px" width="100px;" style="top:10;">
         </div>
         <div class="col-md-6" style="padding: 10px 0;">
           <h2>{{$user->fullname}}</h2>
@@ -122,7 +126,7 @@
           <p>{{$user->bio}}</p>
           <br>
           <ul class="counter" style="top:20px;">
-            <li><h4 style="color: #777">{{--$follow->count()--}} followers</h4></li>
+            <li><h4 style="color: #777">{{--$follow->count()--}} 12 followers</h4></li>
             <li><h4 style="color: #777">{{$post->count()}} feels</h4></li>
           </ul>
         </div>
@@ -145,7 +149,7 @@
             <li><button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal1" style="margin-bottom: 5px; width: 100%;">
               Edit Profile</button></li>
               @else
-              <li><button type="button" class="btn btn-success" style="width: 100%; margin-bottom: 5px;">Message</button></li>
+              <li><button type="button" class="btn btn-primary" style="width: 100%; margin-bottom: 5px;">Message</button></li>
               @endif
 
               <!-- <li><a href="{{url('profile/'.$user->username.'/edit')}}" class="btn btn-warning" style="width: 100%;">Edit</a></li> -->
@@ -215,7 +219,7 @@
 
     <hr>
 
- @foreach($post as $data)
+    @foreach($post as $data)
 
     <section id="cd-timeline">
       <div class="cd-timeline-block">
@@ -227,7 +231,7 @@
           <a href="{{url('profile/'.$user->username)}}"><h4 style="font-size: 14px; padding: 5px 10px; margin-bottom: 10px;">{{'@'. $user->username }}</h4></a>
           <!--  -->
           <div class="col-md-12 text-center">
-            <img src="{{asset('img/emot/'.$data->emot)}}" width="100" alt="">
+            <img src="{{asset('img/emot/'.$data->emot)}}" width="auto" alt="">
             <p style="padding: 5px 0; text-align: left; color:#777; font-size: 15px;">{{'"'. $data->text .'"'}}</p>
           </div>
           <ul class="like">
@@ -242,20 +246,20 @@
 
   </div>
 
-<div class="col-md-3">
-  <div class="panel panel-body" style="padding: 15px 20px!important;">
-    <h4>#Trending Tags</h4>
-    <ul class="tags">
-      <li>KZL</li>
-      <li>mantap jiwa</li>
-      <li>ngabuburit</li>
-      <li>bukber</li>
-      <li>kolak</li>
-      <li>macet</li>
+  <div class="col-md-3">
+    <div class="panel panel-body" style="padding: 15px 20px!important;">
+      <h4>#Trending Tags</h4>
+      <ul class="tags">
+        <li>KZL</li>
+        <li>mantap jiwa</li>
+        <li>ngabuburit</li>
+        <li>bukber</li>
+        <li>kolak</li>
+        <li>macet</li>
 
-    </ul>
+      </ul>
+    </div>
   </div>
-</div>
 
 </div>
 @endsection
