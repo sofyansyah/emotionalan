@@ -1,60 +1,114 @@
 @extends('layouts.master')
 
 <style type="text/css">
-	.container{
-		min-height: 100%;	
+	body { padding-top: 50px; }
+	.menu li{
+		padding: 10px 0;
+
 	}
-	.panel-body
-	{
-		padding: 10px!important;
+	.menu li a{
+		color:#333!important;
+	}
+	.tags li{
+		padding: 8px;
+		color: #aaa;
+		font-size: 14px;
+	}
+	.like li{
+		padding: 10px 5px;
+		color: #bbb;
+		font-size: 14px;
+		display: inline-block;
+	}
+	.like{
+		padding: 10px 10px 0;
+
+	}
+	.like img{
+		margin-bottom: -5px;
+	}
+	.count{
+		padding: 0 3px;
+		margin-top: -2px;
+	}
+	.panel-body{
+		padding: 15px 0!important;
+	}
+	p{
+		padding: 5px;
+	}
+	text-area{
+
+
 	}
 </style>
 
 @section('content')
 
-<style type="text/css">
-	.cd-timeline-block:nth-child(even) .cd-timeline-content{
-		float: right!important;
-	}
-	.panel-body
-	{
-		padding: 15px!important;
-	}
-	.emotdate{
-		color: #777;
-		font-size: 12px;
-		float: right;
-		padding:10px 5px;
-	}
-	.fitures > li{
-		display: inline-block;
-		padding-right: 15px;
-	}
-	.morecontent span {
-		display: none;
-	}
-	.morelink {
-		display: block;
-	}
-	@media screen and (max-width: 991px) {
-		.teks {
-			padding: 10px 0;
 
-		}
-		.container{
-			padding:0 5px;
-		}
-		.col-md-2{
-			text-align: center;
-		}
-	}
-</style>
+<div class="container">   
 
-<div class="container">     
+	<div class="col-md-2">
+		<ul class="menu">
+			@if (Auth::guest())
+			<li><a href="{{ url('/login') }}">Login</a></li>
+			<!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
+			@else
+			<li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="width: 100%">Posting</button>
+			</li>
+			<li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="20px" width="20" style="float: left; margin: -4 5px 0 0;">
+				<a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
+
+				<li><a href="#"><img src="{{asset('img/icon/envelope.svg')}}" height="18"> Inbox</a></li>
+				<li><a href="#"><img src="{{asset('img/icon/notifications.svg')}}" height="18"> Notification</a></li>
+				<li>
+					<a href="{{ url('/logout') }}"
+					onclick="event.preventDefault();
+					document.getElementById('logout-form').submit();">
+					<img src="{{asset('img/icon/exit.svg')}}" height="18"> Logout
+				</a>
+
+				<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+					{{ csrf_field() }}
+				</form>
+			</li>
+			@endif
+		</ul>
+	</div>  
+
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body" style="height: 280px;">
+					<form action="{{url('/home')}}" method="POST" enctype="multipart/form-data">
+						{{ csrf_field()}}
+						<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+					<!-- 	<div class="form-group">
+
+							<input type="text" class="form-control" rows="5" id="title" placeholder="Title" name="title">
+						</div> -->
+						<div class="form-group">
+
+							<textarea class="form-control" rows="5" id="text" placeholder="Text" name="text"></textarea>
+						</div>
+						<div class="form-group">
+
+							<input type="file" id="emot" placeholder="Image" name="emot">
+							<input type="hidden" value="{{ 'csrf_token' }}" name="token">
+						</div>
+						<input type="submit" name="submit" value="Post" class="btn btn-info pull-right">
+					</form>
+					<button type="button" class="btn btn-warning pull-right" data-dismiss="modal" style="margin-right: 5px;">Close</button>
+				</div>
+			</div>   
+		</div>
+	</div>
 	
-	<div class="col-md-12 nopadding">
-
-		<div class="panel panel-default" style="padding-bottom: 0">
+	<div class="col-md-7 nopadding">
+		 @include('include.alert')
+<!-- 		<div class="panel panel-default" style="padding-bottom: 0">
 			
 			<div class="panel-body" style="padding:20px!important; ">
 				<form action="{{url('emotion')}}" method="POST" enctype="multipart/form-data">
@@ -71,50 +125,37 @@
 					<input type="submit" name="submit" class="btn btn-success pull-right" value="Send">
 				</form>
 			</div>
-		</div>
+		</div> -->
 
 
 		@forelse( $emotions as $feels )
 		{{-- @if ($emotion->user_id ==Auth::id()) --}}
 
-		<section class="feeds">
-			<div class="panel panel-body list-feeds">
-				<div class="col-md-12" style="padding: 0 0 15px 0;">
-					<div class="col-md-12 nopadding" style="margin-bottom: 15px;">
-						<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="img-rounded" height="50px" width="50px;" alt="" style="float: left; margin-right: 10px;">
-						<p class="emotdate"> {{$feels->created_at->diffForHumans()}}</p>
-						<a href="{{url('profile/'.$feels->username)}}">
-							<h4 style="padding:10px;"">{{'@'. $feels->username }}</h4>
-						</a>
-						
-					</div>
+		<section id="cd-timeline">
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-picture">
+					<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="image-rounded" height="60" width="60" alt="Picture">
+				</div> <!-- cd-timeline-img -->
 
-					<div class="col-md-12 nopadding">
-						<div class="col-md-10 text-left nopadding">
-							
-							<p  class="teks" style="font-size: 25px;">{{$feels->text}}</p>
-							
-						</div>
-						<div class="col-md-2 nopadding">
-							<img src="{{asset('img/emot/'.$feels->emot)}}" height="60px" width="60px;" alt="">			
-						</div>
+				<div class="cd-timeline-content">
+					<!-- <h4>{{$feels->fullname }}</h4> -->
+					<a href="{{url('profile/'.$feels->username)}}"><h4 style="font-size: 14px; padding: 5px 10px; margin-bottom: 10px; float: left;">{{'@'. $feels->username }}</h4></a>
+					<p style="text-align: right;padding: 5px 10px; font-size: 12px;">{{$feels->created_at->diffForHumans()}}</p>
+					<!--  -->
+					<div class="col-md-12 text-center">
+					<img src="{{asset('img/emot/'.$feels->emot)}}" width="auto" alt="">
+						<!-- <h2>{{$feels->title}}</h2> -->
+						<p style="padding: 5px 0; text-align: left; color:#777; font-size:20px; text-align: center;">{{'"'. $feels->text .'"'}}</p>
 					</div>
-					
-				</div>
-				<div class="col-md-12 nopadding">
-					<ul class="fitures" style="margin-bottom: 15px;">
-						<li><span style="color:#bbb; font-size: 14px;">Like</span></li>
-						<li><span style="color:#bbb; font-size: 14px;">Share</span></li>
-						<li><a href={{url('emotion/'.$feels->id)}}><span style="color:#bbb; font-size: 14px;">Comment</span></a></li>
-						<li></li>
+					<ul class="like">
+						<li><img src="{{asset('img/icon/love.svg')}}" height="18" style="margin-right: -2px;"> <span class="count">20</span></li>
+						<li><a href={{url('emotion/'.$feels->id)}}><img src="{{asset('img/icon/comment.svg')}}" height="18"> <span class="count" style="color:#bbb;">21</span></a></li>
 					</ul>
-					
-					
-				</div>
+				</div> <!-- cd-timeline-content -->
 			</div> <!-- cd-timeline-block -->
-			
-			
+
 		</section> <!-- cd-timeline -->
+
 
 		{{-- @endif --}}
 		@empty
@@ -122,47 +163,23 @@
 
 		@endforelse
 	</div>
+
+	<div class="col-md-3">
+		<div class="panel panel-body" style="padding: 15px 20px!important;">
+			<h4>#Trending Tags</h4>
+			<ul class="tags">
+				<li>KZL</li>
+				<li>mantap jiwa</li>
+				<li>ngabuburit</li>
+				<li>bukber</li>
+				<li>kolak</li>
+				<li>macet</li>
+
+			</ul>
+		</div>
+	</div>
 </div>
 
-<script>
-	
-	$(document).ready(function() {
-    // Configure/customize these variables.
-    var showChar = 100;  // How many characters are shown by default
-    var ellipsestext = "...";
-    var moretext = "Show more";
-    var lesstext = "Show less";
-    
 
-    $('.more').each(function() {
-    	var content = $(this).html();
-
-    	if(content.length > showChar) {
-
-    		var c = content.substr(0, showChar);
-    		var h = content.substr(showChar, content.length - showChar);
-
-    		var html = c + '' + ellipsestext+ '&nbsp;' + h + '&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a>';
-
-    		$(this).html(html);
-    	}
-
-    });
-
-    $(".morelink").click(function(){
-    	if($(this).hasClass("less")) {
-    		$(this).removeClass("less");
-    		$(this).html(moretext);
-    	} else {
-    		$(this).addClass("less");
-    		$(this).html(lesstext);
-    	}
-    	$(this).parent().prev().toggle();
-    	$(this).prev().toggle();
-    	return false;
-    });
-});
-
-</script>
 
 @endsection

@@ -28,11 +28,11 @@
                 @if (Auth::guest())
                 <!-- Branding Image -->
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/') }}">
-                    <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
+                    <h1 style="font-family: 'madita'; font-size: 28px; color: #333; ">Staggler</h1>
                 </a>
                 @else
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/emotion') }}">
-                   <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
+                   <h1 style="font-family: 'madita'; font-size: 28px; color: #333; ">Staggler</h1>
                 </a>
                 @endif
             </div>
@@ -60,17 +60,17 @@
                                 </div>
                             </li>
                             <!-- <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li> -->
-                            <li><a href="#"><img src="{{asset('/img/img/notif.svg')}}" height="25px"></a></li>
-
-                            <li class="dropdown">
+                          <!--   <li><a href="#"><img src="{{asset('/img/img/notif.svg')}}" height="25px"></a></li>
+ -->
+                           <!--  <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="28px" width="28px">
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{url('/profile')}}/{{Auth::user()->username}}">Profile</a></li>
-                                   <!--  <li><a href="{{url('communitys/create')}}">Create</a></li>
-                                   <li><a href="{{url('communitys')}}">Feeds</a></li> -->
+                                    <li><a href="{{url('communitys/create')}}">Create</a></li>
+                                   <li><a href="{{url('communitys')}}">Feeds</a></li>
                                    <li>
                                     <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
@@ -83,7 +83,7 @@
                                 </form>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     @endif
                 </ul>
