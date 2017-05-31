@@ -28,11 +28,11 @@
                 @if (Auth::guest())
                 <!-- Branding Image -->
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/') }}">
-                    <h1 style="font-family: 'madita'; font-size: 28px; color: #333; ">Staggler</h1>
+                    <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
                 </a>
                 @else
                 <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/emotion') }}">
-                   <h1 style="font-family: 'madita'; font-size: 28px; color: #333; ">Staggler</h1>
+                   <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
                 </a>
                 @endif
             </div>

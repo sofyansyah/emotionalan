@@ -7,21 +7,21 @@
 
 	}
 	.menu li a{
-		color:#333!important;
+		color:#fafafa!important;
 	}
 	.tags li{
 		padding: 8px;
-		color: #aaa;
+		color: #777;
 		font-size: 14px;
 	}
 	.like li{
-		padding: 10px 5px;
+		padding: 5px 3px;
 		color: #bbb;
-		font-size: 14px;
+		font-size: 12px;
 		display: inline-block;
 	}
 	.like{
-		padding: 10px 10px 0;
+		
 
 	}
 	.like img{
@@ -54,7 +54,7 @@
 			<li><a href="{{ url('/login') }}">Login</a></li>
 			<!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
 			@else
-			<li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="width: 100%">Posting</button>
+			<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="width: 100%; background-color: #8CD790; border-color: none;">Posting</button>
 			</li>
 			<li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="20px" width="20" style="float: left; margin: -4 5px 0 0;">
 				<a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
@@ -90,13 +90,12 @@
 							<input type="text" class="form-control" rows="5" id="title" placeholder="Title" name="title">
 						</div> -->
 						<div class="form-group">
-
 							<textarea class="form-control" rows="5" id="text" placeholder="Text" name="text"></textarea>
 						</div>
 						<div class="form-group">
-
 							<input type="file" id="emot" placeholder="Image" name="emot">
-							<input type="hidden" value="{{ 'csrf_token' }}" name="token">
+							<input type="hidden" value="{{ 'csrf_token' }}" name="token"><br>
+							<input type="text" class="form-control" id="emot_text" name="emot_text" placeholder="emotion text" style="max-width: 50%;">
 						</div>
 						<input type="submit" name="submit" value="Post" class="btn btn-info pull-right">
 					</form>
@@ -107,7 +106,7 @@
 	</div>
 	
 	<div class="col-md-7 nopadding">
-		 @include('include.alert')
+		@include('include.alert')
 <!-- 		<div class="panel panel-default" style="padding-bottom: 0">
 			
 			<div class="panel-body" style="padding:20px!important; ">
@@ -135,22 +134,29 @@
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-picture">
 					<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="image-rounded" height="60" width="60" alt="Picture">
-				</div> <!-- cd-timeline-img -->
+					<p style=" text-align:center;margin-top:20px;padding: 5px; font-size: 10px; color: #fafafa; background-color: #ED6A5A; border-radius:5px;">{{$feels->created_at->diffForHumans()}}</p>
+				</div>
+				<!-- cd-timeline-img -->
 
 				<div class="cd-timeline-content">
-					<!-- <h4>{{$feels->fullname }}</h4> -->
-					<a href="{{url('profile/'.$feels->username)}}"><h4 style="font-size: 14px; padding: 5px 10px; margin-bottom: 10px; float: left;">{{'@'. $feels->username }}</h4></a>
-					<p style="text-align: right;padding: 5px 10px; font-size: 12px;">{{$feels->created_at->diffForHumans()}}</p>
-					<!--  -->
-					<div class="col-md-12 text-center">
-					<img src="{{asset('img/emot/'.$feels->emot)}}" width="auto" alt="">
-						<!-- <h2>{{$feels->title}}</h2> -->
-						<p style="padding: 5px 0; text-align: left; color:#777; font-size:20px; text-align: center;">{{'"'. $feels->text .'"'}}</p>
+					<div class="col-md-12">
+						<a href="{{url('profile/'.$feels->username)}}"><h4 style="font-size: 16px;margin-top: 2px;">{{'@'. $feels->username }}</h4></a>
 					</div>
-					<ul class="like">
-						<li><img src="{{asset('img/icon/love.svg')}}" height="18" style="margin-right: -2px;"> <span class="count">20</span></li>
-						<li><a href={{url('emotion/'.$feels->id)}}><img src="{{asset('img/icon/comment.svg')}}" height="18"> <span class="count" style="color:#bbb;">21</span></a></li>
-					</ul>
+					<div class="col-md-7">
+						<p style="padding: 5px 0; text-align: left; color:#777; font-size:20px;">{{'"'. $feels->text .'"'}}</p>
+					</div>
+					<div class="col-md-5 text-center">
+						<img src="{{asset('img/emot/'.$feels->emot)}}" width="auto" alt="">
+						<!-- <p>{{$feels->emot_text}}</p> -->
+						
+					</div>
+					<div class="col-md-12 text-left">
+						<ul class="like text-left">
+							<li><!-- img src="{{asset('img/icon/love.svg')}}" height="14" style="margin-right: -2px;"> --><span class="count">20</span> Like </li>
+							<li><a href={{url('emotion/'.$feels->id)}}><!-- <img src="{{asset('img/icon/comment.svg')}}" height="14"> --><span class="count" style="color:#bbb;">21</span> Comment</a></li>
+						</ul>
+					</div>
+					
 				</div> <!-- cd-timeline-content -->
 			</div> <!-- cd-timeline-block -->
 

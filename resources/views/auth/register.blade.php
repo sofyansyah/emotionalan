@@ -1,9 +1,16 @@
 @extends('layouts.master')
+<style type="text/css">
+    .navbar-default{
+        visibility: hidden;
+    }
 
+</style>
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 nopadding">
+        <div class="col-md-8 col-md-offset-2 nopadding">
+        <h1 style="font-family: 'madita' ; text-align: center;font-size: 50px;color: #fafafa;">Staggler</h1><br>
+        <h1 style="text-align: center;font-size: 20px;color: #fafafa;">Tell Me Your Story</h1><br>
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">

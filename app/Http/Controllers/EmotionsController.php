@@ -49,7 +49,8 @@ class EmotionsController extends Controller
        $emotion = new Emotion;
        $emotion->user_id = Auth::user()->id;
        $emotion->text= $request->text;
-       $emotion->emot= $request->emot; 
+       $emotion->emot= $request->emot;
+       $emotion->emot_text= $request->emot_text; 
        $emotion->save();
         // Emotion::create ($request->all());
         // Emotion::create ([
