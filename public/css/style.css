@@ -80,7 +80,7 @@ text-decoration:none;
 	font-family: 'opensans';
 }
 	.container{
-		max-width:900px;
+		max-width:750px;
 		min-height: 100%;
 		padding: 0px;
 	}
@@ -305,9 +305,9 @@ header h1 {
   position: relative;
   /*padding: 2em 0;*/
   /*margin-top: 2em;*/
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
-#cd-timeline::before {
+/*#cd-timeline::before {
  
   content: '';
   position: absolute;
@@ -316,7 +316,7 @@ header h1 {
   height: 130%;
   width: 2px;
   background: #aaa;
-}
+}*/
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
    /* margin-top: 3em;
@@ -324,7 +324,7 @@ header h1 {
   }
   #cd-timeline::before {
     /*left: 50%;*/
-    margin-left: 5px;
+    /*margin-left: 5px;*/
     /*height: 120%;*/
   }
 }

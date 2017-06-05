@@ -1,8 +1,16 @@
 <style type="text/css">
-    
-    .dropdown > img{
-        background: url("image/agita.png");;
+
+    .container{
+        min-height: auto!important;
     }
+    .menu{
+        margin:10px 0 20px;
+    }
+    .menu li{
+        display: inline-block;
+        padding:5px 8px;
+    }
+    .form-group input{width: 100%;}
 </style>
 
 
@@ -13,94 +21,55 @@
         'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <div class="container">
+        <div class="col-md-12 nopadding header">
+            <ul class="menu">
+               @if (Auth::guest())
 
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @if (Auth::guest())
-                <!-- Branding Image -->
-                <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/') }}">
-                    <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
-                </a>
-                @else
-                <a class="navbar-brand" style="font-family: 'madita';" href="{{ url('/emotion') }}">
+               @else
+               <li style="padding-left: 0;"><a  style="font-family: 'madita';" href="{{ url('/emotion') }}">
                    <h1 style="font-family: 'madita'; font-size: 28px; color: #fafafa; ">Staggler</h1>
+               </a></li>
+
+               <li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="22px" width="22" style="float: left; margin: -4 5px 0 0;">
+                   <a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
+                   <li><a href="#"><img src="{{asset('img/icon/envelope.svg')}}" height="18"> Inbox</a></li>
+                   <li><a href="#"><img src="{{asset('img/icon/notifications.svg')}}" height="18"> Notification</a></li>
+                   <li>
+                    <a href="{{ url('/logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <img src="{{asset('img/icon/exit.svg')}}" height="18"> Logout
                 </a>
-                @endif
-            </div>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                        <!-- <li><a href="#">Explore</a></li>
-                        <li><a href="#">Event</a></li> -->
-                        
-                    </ul>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </li>
+            <li style="float: right; padding-right: 0;">
+                <input type="text" id="searching_for" class="form-control" placeholder="search...">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+            </li>
 
 
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <!-- <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li> -->
-                            @else
-                            <li>
-                                <div class="form-group" style="margin-top: 10px;">
-                                    <input type="text" id="searching_for" class="form-control" placeholder="search...">
-                                </div>
-                            </li>
-                            <!-- <li><a href="{{url('emotion/create')}}"><img src="{{asset('/img/img/post.svg')}}" height="18px"></a></li> -->
-                          <!--   <li><a href="#"><img src="{{asset('/img/img/notif.svg')}}" height="25px"></a></li>
- -->
-                           <!--  <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="28px" width="28px">
-                                </a>
+            @endif
+        </ul>
+    </div>
+</div>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{url('/profile')}}/{{Auth::user()->username}}">Profile</a></li>
-                                    <li><a href="{{url('communitys/create')}}">Create</a></li>
-                                   <li><a href="{{url('communitys')}}">Feeds</a></li>
-                                   <li>
-                                    <a href="{{ url('/logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+@yield('js')
+<!-- Scripts -->
+<script src="{{asset('js/app.js')}}"></script>
+<script>
+    var search_bar = $('#searching_for');
+    search_bar.on('keypress', function(e){
+        if(e.which==13)
+        {
+            if(search_bar.val() != "")
+                window.location = "{{url('/search/')}}/" +encodeURIComponent(search_bar.val());
+        }
+    });
+</script>
 
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li> -->
 
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
-    @yield('js')
-    <!-- Scripts -->
-    <script src="{{asset('js/app.js')}}"></script>
-    <script>
-        var search_bar = $('#searching_for');
-        search_bar.on('keypress', function(e){
-            if(e.which==13)
-            {
-                if(search_bar.val() != "")
-                    window.location = "{{url('/search/')}}/" +encodeURIComponent(search_bar.val());
-            }
-        });
-    </script>
 

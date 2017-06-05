@@ -7,22 +7,32 @@
 
   }
   .menu li a{
-    color:#333!important;
+    color:#fafafa!important;
   }
   .tags li{
     padding: 8px;
-    color: #aaa;
+    color: #777;
     font-size: 14px;
   }
   .like li{
-    padding: 10px 5px;
+    padding: 5px 3px;
     color: #bbb;
-    font-size: 14px;
+    font-size: 12px;
     display: inline-block;
   }
-  .like{
-    padding: 10px 10px 0;
+  .counter li{
+    display: inline-block;
 
+
+  }
+  .sosmed li{
+    padding: 5px;
+    display: inline-block;
+
+  }
+  .sosmed{
+    text-align: center;
+    padding: 10px 0;
   }
   .like img{
     margin-bottom: -5px;
@@ -37,10 +47,6 @@
   p{
     padding: 5px;
   }
-  .counter li{
-    display: inline-block;
-    padding: 10px;
-  }
   text-area{
 
 
@@ -52,33 +58,6 @@
 
 <div class="container">
 
-  <div class="col-md-2">
-    <ul class="menu">
-      @if (Auth::guest())
-      <li><a href="{{ url('/login') }}">Login</a></li>
-      <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
-      @else
-      <li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="width: 100%">Posting</button>
-      </li>
-      <li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="24px" width="24px" style="float: left; margin: -4 5px 0 0;">
-        <a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
-
-        <li><a href="#"><img src="{{asset('img/icon/envelope.svg')}}" height="18"> Inbox</a></li>
-        <li><a href="#"><img src="{{asset('img/icon/notifications.svg')}}" height="18"> Notification</a></li>
-        <li>
-          <a href="{{ url('/logout') }}"
-          onclick="event.preventDefault();
-          document.getElementById('logout-form').submit();">
-          <img src="{{asset('img/icon/exit.svg')}}" height="18"> Logout
-        </a>
-
-        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-          {{ csrf_field() }}
-        </form>
-      </li>
-      @endif
-    </ul>
-  </div>  
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -112,18 +91,25 @@
 
 
 
-  <div class="col-md-7 nopadding">
+  <div class="col-md-12 nopadding">
     @include('include.alert')
     <div class="panel panel-default" style="padding: 25px 20px;">
       <div class="panel-body text-left">
-        <div class="col-md-3 nopadding">
-          <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="100px" width="100px;" style="top:10;">
+        <div class="col-md-3 text-center nopadding">
+          <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="100px" width="100px;">
+          <ul class="sosmed">
+          <li> <a href={{'$user->facebook'}}><i class="fa fa-facebook"></i></a></li>
+          <li><a href={{'$user->twitter'}}><i class="fa fa-twitter"></i></a></li>
+          <li><a href={{'$user->instagran'}}><i class="fa fa-instagram"></i></a></li>
+          </ul>
         </div>
         <div class="col-md-6" style="padding: 10px 0;">
           <h2>{{$user->fullname}}</h2>
           <p style="color: #aaa;">@ {{$user->username}}</p>
           <br/>
           <p>{{$user->bio}}</p>
+
+         
           <br>
           <ul class="counter" style="top:20px;">
             <li><h4 style="color: #777">{{--$follow->count()--}} 12 followers</h4></li>
@@ -246,7 +232,7 @@
 
   </div>
 
-  <div class="col-md-3">
+<!--   <div class="col-md-3">
     <div class="panel panel-body" style="padding: 15px 20px!important;">
       <h4>#Trending Tags</h4>
       <ul class="tags">
@@ -259,7 +245,7 @@
 
       </ul>
     </div>
-  </div>
+  </div> -->
 
 </div>
 @endsection

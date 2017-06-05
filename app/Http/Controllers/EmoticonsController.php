@@ -16,18 +16,32 @@ class EmoticonsController extends Controller
      */
     public function index()
     {
-        $emoticons = Emoticon::join('users', 'emoticons.post_id', '=', 'users.id')
-        ->select('emoticons.*','users.username', 'users.avatar')
+        // $emoticons = Emoticon::join('emotion', 'emoticons.id', '=', 'emotion.id')
+        // ->select('emoticons.*','emotion.title', 'emotion.emot')
+        // ->orderBy('id', 'desc')
+        // ->get();
+        // //  $join = Emotion::join('emoticons','emotions.id','=','emoticons.post_id')
+        // // ->select('emotion.emot','emotion.text','emotion.id as emotion_id','emoticons.emoticons','emoticons.details' 'emoticons.post_id')
+        // // $join = User::join('emoticons','users.id','=','emoticons.user_id')
+        // // ->where('users.id',Auth::user()->id)
+        // // ->select('users.id','users.username','users.avatar','emoticons.id as emoticons_id','emoticons.emoticons','emoticons.text')
+        // // ->get();
+        
+        // return view ('emotion.index', compact('emoticons'));
+    }
+        public function home()
+    {
+
+          $emotions = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
+        // ->join('emoticons', 'emotions.user_id', '=', 'emoticons.id')
+        ->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
         ->orderBy('id', 'desc')
         ->get();
-        //  $join = Emotion::join('emoticons','emotions.id','=','emoticons.post_id')
-        // ->select('emotion.emot','emotion.text','emotion.id as emotion_id','emoticons.emoticons','emoticons.details' 'emoticons.post_id')
-        // $join = User::join('emoticons','users.id','=','emoticons.user_id')
-        // ->where('users.id',Auth::user()->id)
-        // ->select('users.id','users.username','users.avatar','emoticons.id as emoticons_id','emoticons.emoticons','emoticons.text')
-        // ->get();
+
+        $emoticons = Emoticon::all();
         
-        return view ('emotion.emoticon', compact('emoticons'));
+        
+        return view ('emotion.index', compact('emoticons','emotions',));
     }
     /**
      * Show the form for creating a new resource.

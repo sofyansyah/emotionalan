@@ -7,21 +7,21 @@
 
 	}
 	.menu li a{
-		color:#333!important;
+		color:#fafafa!important;
 	}
 	.tags li{
 		padding: 8px;
-		color: #aaa;
+		color: #777;
 		font-size: 14px;
 	}
 	.like li{
-		padding: 10px 5px;
+		padding: 5px 3px;
 		color: #bbb;
-		font-size: 14px;
+		font-size: 12px;
 		display: inline-block;
 	}
 	.like{
-		padding: 10px 10px 0;
+		
 
 	}
 	.like img{
@@ -36,6 +36,8 @@
 	}
 	p{
 		padding: 5px;
+		color: #777;
+		font-size: 20px;
 	}
 	text-area{
 
@@ -53,9 +55,9 @@
 			<li><a href="{{ url('/login') }}">Login</a></li>
 			<!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
 			@else
-			<li><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="width: 100%;">Posting</button>
+			<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="width: 100%; background-color: #8CD790; border-color: none;">Posting</button>
 			</li>
-			<li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="24px" width="24px" style="float: left; margin: -4 5px 0 0;">
+			<li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="20px" width="20" style="float: left; margin: -4 5px 0 0;">
 				<a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
 
 				<li><a href="#"><img src="{{asset('img/icon/envelope.svg')}}" height="18"> Inbox</a></li>
@@ -73,7 +75,7 @@
 			</li>
 			@endif
 		</ul>
-	</div>
+	</div>  
 
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
@@ -107,7 +109,7 @@
 
 
 
-	<div class="col-md-7">
+	<div class="col-md-7 nopadding">
 		<div class="panel panel-body" style="margin-bottom: 20px;">
 			<div class="col-md-12">
 
@@ -137,19 +139,14 @@
 					</ul>
 				</div>
 				@endif
-
-				<h2 style="padding: 10px;">{{$emotion->title}}</h2>
-				<p style="padding: 5px; font-size: 14px;">{{$emotion->text}}</p>
-
+				<p>{{'"'. $emotion->text .'"'}}</p>
 			</div>
-
-
 
 			<div class="col-md-12">
 				<div class="panel-body">
 					<form action="{{url('comment')}}" method="POST">
 						{{ csrf_field()}}
-						<textarea style="width: 100%; min-height: 40px; border: none;" placeholder="comment" name="reply" id="reply"></textarea>
+						<textarea style="width: 100%; min-height: 40px; border: none;" placeholder="Comment in here" name="reply" id="reply"></textarea>
 						<input type="hidden" name="id" value="{{$emotion->id}}">
 						<input type="hidden" name="status" value="1">
 						<input type="submit" name="submit" class="btn-xs btn-primary pull-right" value="Send" style="margin-top:10px;">
@@ -173,10 +170,11 @@
 					<div class=" col-md-2">
 						<!-- <h4 style="font-size: 16px; padding: 5px;">{{$usernya->fullname }}</h4> -->
 						<a href="{{url('profile/'.$usernya->username)}}"><h4 style="font-size: 14px; margin-bottom: 10px;">{{'@'. $usernya->username }}</h4></a>
+						{{--$data->created_at->diffForHumans()--}}
 					</div>
 					<!--  -->
-					<div class="col-md-12 text-center">
-						<p style="padding: 5px 0; text-align: left; color:#777; font-size: 15px;">{{'"'. $data->reply .'"'}}</p>
+					<div class="col-md-12 text-left">
+						<p>{{'"'. $data->reply .'"'}}</p>
 					</div>
 				</div> <!-- cd-timeline-content -->
 			</div> <!-- cd-timeline-block -->

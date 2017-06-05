@@ -23,6 +23,7 @@ Route::group(['middleware' => ['login']], function () {
     Route::resource('comment', 'CommentsController');
     Route::post('comment/{id}/edit', 'CommentsController@update');
     Route::resource('emoticon', 'EmoticonsController');
+    // Route::get('/', 'EmoticonsController@home');
     Route::resource('emotion', 'EmotionsController');
     Route::get('profile/{username}', 'ProfileController@profile');
     Route::resource('home/', 'EmotionsController');

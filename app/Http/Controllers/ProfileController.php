@@ -45,9 +45,9 @@ class ProfileController extends Controller
         $user->password = Hash::make($r->password);
         $user->bio = $r->bio;
         // $user->alamat = $r->alamat;
-        // $user->facebook = $r->facebook;
-        // $user->twitter = $r->twitter;
-        // $user->instagram = $r->instagram;
+        $user->facebook = $r->facebook;
+        $user->twitter = $r->twitter;
+        $user->instagram = $r->instagram;
 
 
         if (!empty($r->foto)) {

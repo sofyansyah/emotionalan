@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Emotion;
+use App\Emoticon;
 use App\User;
 use App\Comment;
 
@@ -22,13 +23,15 @@ class EmotionsController extends Controller
         ->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
         ->orderBy('id', 'desc')
         ->get();
-        $join = User::join('comments','users.id','=','comments.user_id')
-        ->where('users.id',Auth::user()->id)
-        ->where('comments.status','1')
-        ->select('users.id','users.username','users.avatar','comments.id as comment_id','comments.reply','comments.post_id')
-        ->get();
+        // $join = User::join('comments','users.id','=','comments.user_id')
+        // ->where('users.id',Auth::user()->id)
+        // ->where('comments.status','1')
+        // ->select('users.id','users.username','users.avatar','comments.id as comment_id','comments.reply','comments.post_id')
+        // ->get();
+        $emoticons = Emoticon::all();
+        $users = User::inrandomOrder()->limit(5)->get();
         
-        return view ('emotion.index', compact('emotions'));
+        return view ('emotion.index', compact('emotions','emoticons','users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -60,12 +63,12 @@ class EmotionsController extends Controller
 
         //     ]);
 
-       $file       = $request->file('emot');
-       $fileName   = $file->getClientOriginalName();
-       $request->file('emot')->move("img/emot/", $fileName);
+       // $file       = $request->file('emot');
+       // $fileName   = $file->getClientOriginalName();
+       // $request->file('emot')->move("img/emot/", $fileName);
 
-       $emotion->emot = $fileName;
-       $emotion->save();
+       // $emotion->emot = $fileName;
+       // $emotion->save();
 
        return redirect ('/home');
    }

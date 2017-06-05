@@ -12,6 +12,7 @@ class Comment extends Model
 	    'post_id', 
 	    'user_id', 
 	    'reply', 
-	    'status'
+	    'status',
+	   
     ];
 }
