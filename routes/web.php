@@ -34,4 +34,5 @@ Route::group(['middleware' => ['login']], function () {
     Route::get('follow/{username}', 'ProfileController@follow');
     Route::get('unfollow/{username}', 'ProfileController@unfollow');
 
+
 });

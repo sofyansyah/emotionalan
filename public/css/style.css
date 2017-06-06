@@ -4,7 +4,8 @@ h1, h2, h3, h4{
   color: #333;
 }
 body{
-	background-color: #2292A4;	
+	/*background-color: #2292A4;	*/
+  background-color: #eee;  
 	font-family: 'sanfrancisco'!important;
 
 }
@@ -80,14 +81,13 @@ text-decoration:none;
 	font-family: 'opensans';
 }
 	.container{
-		max-width:750px;
+		max-width:850px;
 		min-height: 100%;
 		padding: 0px;
 	}
 	.container-fluid{
 		max-width: 1100px;
-	}
-
+}
 	.menu-sidebar{padding: 0;
 		background-color: none;
 		max-width:250px;
@@ -373,7 +373,7 @@ header h1 {
   width: 50px;
   height: 50px;
   border-radius: 6px;
-  box-shadow: 0 0 0 4px #85C7F2, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+  /*box-shadow: 0 0 0 4px #85C7F2, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);*/
 }
 .cd-timeline-img img {
   display: block;
@@ -387,7 +387,7 @@ header h1 {
   border-radius: 6px;
 }
 .cd-timeline-img.cd-picture {
-  background: #06BEE1;
+  /*background: #06BEE1;*/
 }
 .cd-timeline-img.cd-movie {
   background: #c03b44;

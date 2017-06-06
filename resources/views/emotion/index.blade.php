@@ -33,6 +33,7 @@
 	}
 	.panel-body{
 		padding: 15px 0!important;
+		border: 1px solid #eee;
 	}
 	p{
 		padding: 5px;
@@ -104,7 +105,7 @@
 		@include('include.alert')
 		<div class="panel panel-default" style="padding-bottom: 0">
 			
-			<div class="panel-body" style="padding:15px!important; border-radius: 5px; ">
+			<div class="panel-body" style="padding:15px!important; border-radius: 5px;background: linear-gradient(#fff,#f9f9f9;">
 				<form action="{{url('emotion')}}" method="POST" enctype="multipart/form-data">
 
 					{{ csrf_field()}}
@@ -113,20 +114,19 @@
 						<textarea class="form-control" rows="5" id="text" placeholder="Your Feel" name="text"></textarea>
 					</div>
 					<div class="col-md-12 nopadding" style="padding-bottom: 20px;">
-			
-							
-								@forelse($emoticons as $emoticon)
-								<label class="radio-inline" style="padding: 2px;"><img src="{{asset('img/emot/'. $emoticon->emoticons)}}" width="30" style="cursor: pointer;"><input type="radio" name="emot" style="visibility: hidden;"></label>
-								
-								@empty
-								no
-								@endforelse
-							
-	
-						
+						<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo" style="border: 1px solid #e5e5e5!important;"><img src="{{asset('img/icon/smile.svg')}}" width="20"></button>
+						<div id="demo" class="collapse">
+							@forelse($emoticons as $emoticon)
+							<label class="radio-inline" style="padding: 2px;"><img src="{{asset('img/emot/'. $emoticon->emoticons)}}" width="30" style="cursor: pointer;"><input type="radio" name="emot" style="visibility: hidden;"></label>
 
-						
+							@empty
+							no
+							@endforelse
 
+						</div>
+
+
+						<input type="submit" name="submit" class="btn btn-warning pull-right" value="Send" style="background: #0FA3B1; border: none;">
 
 					</div>
 
@@ -134,7 +134,7 @@
 						<input type="file" id="emot" placeholder="Emot" name="emot">
 						<input type="hidden" value="{{ 'csrf_token' }}" name="token">
 					</div> -->
-					<input type="submit" name="submit" class="btn btn-success pull-right" value="Send" style="background: linear-gradient(#ff805f,#f26039);">
+					
 				</form>
 			</div>
 		</div>
@@ -147,11 +147,11 @@
 			<div class="cd-timeline-block">
 				<div class="cd-timeline-img cd-picture">
 					<img src="{{asset('img/avatar/'.$feels->avatar)}}" class="image-rounded" height="60" width="60" alt="Picture">
-					<p style=" text-align:center;margin-top:18px;padding: 2px; font-size: 10px; color: #fafafa; background-color: #2292a4; border-radius:5px;">{{$feels->created_at->diffForHumans()}}</p>
+					<p style=" text-align:center;margin-top:18px;padding: 2px; font-size: 10px; color: #666;">{{$feels->created_at->diffForHumans()}}</p>
 				</div>
 				<!-- cd-timeline-img -->
 
-				<div class="cd-timeline-content">
+				<div class="cd-timeline-content"  style="background: linear-gradient(#fff,#f9f9f9);border: 1px solid #ddd;">
 					<div class="col-md-12">
 						<a href="{{url('profile/'.$feels->username)}}"><h4 style="font-size: 16px;margin-top: 2px;">{{'@'. $feels->username }}</h4></a>
 					</div>
@@ -183,52 +183,51 @@
 		@endforelse
 	</div>
 
-  <div class="col-md-3" style="padding-right: 0;">
-    <div class="panel panel-body" style="padding: 15px 20px!important;">
-      <h4>Latest update</h4>
-      <ul class="tags">
-      <?php
-      use App\Emotion;
-      		$emotions = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
+	<div class="col-md-3" style="padding-right: 0;">
+		<div class="panel panel-body" style="padding: 15px 15px!important; background: linear-gradient(#fff,#f9f9f9);border: 1px solid #ddd;">
+			<h4>Top Emoji</h4>
+			<ul class="tags">
+				<?php
+				use App\Emotion;
+				$emotions = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
         // ->join('emoticons', 'emotions.user_id', '=', 'emoticons.id')
-        ->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
-        ->limit(5)
-        ->latest()
-        ->get();
-      ?>
-      @forelse($emotions as $user)
-        <li>
-        <img src="{{asset('img/avatar/'.$user->avatar)}}" class="img-circle" height="30" width="30" style="float: left; margin-right: 5px; ">
-        {{$user->username}}<br>
-        {{$user->created_at->diffForHumans()}}</li>
-        @empty
-        no
-        @endforelse
+				->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
+				->limit(5)
+				->latest()
+				->get();
+				?>
+				@forelse($emotions as $user)
+				<li>
+					<img src="{{asset('img/emot/'.$user->emot)}}" height="40" width="40">
+					<p>{{$user->text}}</p>
+					@empty
+					no
+					@endforelse
 
-      </ul>
-    </div>
- <div class="panel panel-body" style="padding: 15px 20px!important;">
-      <h4>Get a friend</h4>
-      <ul class="tags">
-     
-
-      @forelse($users as $friend)
-        <li>
-        <img src="{{asset('img/avatar/'.$friend->avatar)}}" class="img-circle" height="30" width="30" style="float: left; margin-right: 5px; ">
-        {{$friend->username}}<br>
-       <button class="btn-xs btn-primary">Follow</button>
-        @empty
-        no
-        @endforelse
-
-      </ul>
-    </div>
-
-  </div>
+				</ul>
+			</div>
+			<div class="panel panel-body" style="padding: 15px 15px!important;background: linear-gradient(#fff,#f9f9f9); border: 1px solid #ddd;">
+				<h4>Get a new friend</h4>
+				<ul class="tags">
 
 
+					@forelse($users as $friend)
+					<li>
+						<img src="{{asset('img/avatar/'.$friend->avatar)}}" class="img-circle" height="45" width="45" style="float: left; margin-right: 8px; ">
+						{{$friend->username}}<br>
+						<button class="btn btn-primary" style="padding:3px 5px; font-size: 12px; margin-top: 5px;background: linear-gradient(#3498db, #2980b9);">Follow</button>
+						@empty
+						no
+						@endforelse
 
-</div>
+					</ul>
+				</div>
+
+			</div>
 
 
-@endsection
+
+		</div>
+
+
+		@endsection

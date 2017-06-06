@@ -6,6 +6,12 @@
 .panel-body{
     background-color: #2292A4!important;
 }
+.footul{
+    visibility: hidden;
+}
+body{
+    background-color: #2292A4;
+}
 
 </style>
 @section('content')
@@ -21,8 +27,8 @@
     }
 </style>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 nopadding">
+    <div class="row" style="margin-top: 70px;">
+        <div class="col-md-8 col-md-offset-2 nopadding">
            <h1 style="font-family: 'madita' ; text-align: center;font-size: 50px;color: #fafafa;">Staggler</h1><br>
            <h1 style="text-align: center;font-size: 20px;color: #fafafa;">Whats your story today?</h1><br>
           
