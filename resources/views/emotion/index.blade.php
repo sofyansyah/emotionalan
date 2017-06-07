@@ -165,69 +165,75 @@
 					</div>
 					<div class="col-md-12 text-left">
 						<ul class="like text-left">
-							<li><!-- img src="{{asset('img/icon/love.svg')}}" height="14" style="margin-right: -2px;"> --><span class="count">20</span> Like </li>
-							<li><a href={{url('emotion/'.$feels->id)}}><!-- <img src="{{asset('img/icon/comment.svg')}}" height="14"> --><span class="count" style="color:#bbb;">21</span> Comment</a></li>
-						</ul>
-					</div>
-					
-				</div> <!-- cd-timeline-content -->
-			</div> <!-- cd-timeline-block -->
+							<li>
+								@if(count($likes) > 0)
+								<a href="{{url('like/'. $likes->username)}}" class="btn btn-info" style="margin-bottom: 5px; width: 100%;"> unlike</a>
+								
+								@else
+								<a href="{{url('unlike/'.$likes)}}" class="btn btn-success" style="margin-bottom: 5px; width: 100%;"> like </a>
+								@endif
+								<li><a href={{url('emotion/'.$feels->id)}}><!-- <img src="{{asset('img/icon/comment.svg')}}" height="14"> --><span class="count" style="color:#bbb;">21</span> Comment</a></li>
+							</ul>
+						</div>
 
-		</section> <!-- cd-timeline -->
+					</div> <!-- cd-timeline-content -->
+				</div> <!-- cd-timeline-block -->
+
+			</section> <!-- cd-timeline -->
 
 
-		{{-- @endif --}}
-		@empty
-		No Emot
+			{{-- @endif --}}
+			@empty
+			No Emot
 
-		@endforelse
-	</div>
+			@endforelse
+		</div>
 
-	<div class="col-md-3" style="padding-right: 0;">
-		<div class="panel panel-body" style="padding: 15px 15px!important; background: linear-gradient(#fff,#f9f9f9);border: 1px solid #ddd;">
-			<h4>Top Emoji</h4>
-			<ul class="tags">
-				<?php
-				use App\Emotion;
-				$emotions = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
-        // ->join('emoticons', 'emotions.user_id', '=', 'emoticons.id')
-				->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
-				->limit(5)
-				->latest()
-				->get();
-				?>
-				@forelse($emotions as $user)
-				<li>
-					<img src="{{asset('img/emot/'.$user->emot)}}" height="40" width="40">
-					<p>{{$user->text}}</p>
-					@empty
-					no
-					@endforelse
-
-				</ul>
-			</div>
-			<div class="panel panel-body" style="padding: 15px 15px!important;background: linear-gradient(#fff,#f9f9f9); border: 1px solid #ddd;">
-				<h4>Get a new friend</h4>
+		<div class="col-md-3" style="padding-right: 0;">
+			<div class="panel panel-body" style="padding: 15px 15px!important; background: linear-gradient(#fff,#f9f9f9);border: 1px solid #ddd;">
+				<h4>Top Emoji</h4>
 				<ul class="tags">
-
-
-					@forelse($users as $friend)
+					<?php
+					use App\Emotion;
+					$emotions = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
+        // ->join('emoticons', 'emotions.user_id', '=', 'emoticons.id')
+					->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
+					->limit(5)
+					->latest()
+					->get();
+					?>
+					@forelse($emotions as $user)
 					<li>
-						<img src="{{asset('img/avatar/'.$friend->avatar)}}" class="img-circle" height="45" width="45" style="float: left; margin-right: 8px; ">
-						{{$friend->username}}<br>
-						<button class="btn btn-primary" style="padding:3px 5px; font-size: 12px; margin-top: 5px;background: linear-gradient(#3498db, #2980b9);">Follow</button>
+						<img src="{{asset('img/emot/'.$user->emot)}}" height="40" width="40">
+						<p>{{$user->text}}</p>
 						@empty
 						no
 						@endforelse
 
 					</ul>
 				</div>
+				<div class="panel panel-body" style="padding: 15px 15px!important;background: linear-gradient(#fff,#f9f9f9); border: 1px solid #ddd;">
+					<h4>Get a new friend</h4>
+					<ul class="tags">
+
+
+						@forelse($users as $friend)
+						<li>
+							<img src="{{asset('img/avatar/'.$friend->avatar)}}" class="img-circle" height="45" width="45" style="float: left; margin-right: 8px; ">
+							{{$friend->username}}<br>
+							<button class="btn btn-primary" style="padding:3px 5px; font-size: 12px; margin-top: 5px;background: linear-gradient(#3498db, #2980b9);">Follow</button>
+							@empty
+							no
+							@endforelse
+
+						</ul>
+					</div>
+
+				</div>
+
+
 
 			</div>
 
 
-
-		</div>
-
-
-		@endsection
+			@endsection

@@ -1,10 +1,10 @@
 @extends('layouts.master')
 <style type="text/css">
-    .header, .footul{
+    .nav, .footul{
         visibility: hidden;
     }
 body{
-    background-color: #2292A4;    
+    background-color: #2292A4!important;    
 }
 </style>
 @section('content')

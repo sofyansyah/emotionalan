@@ -1,6 +1,6 @@
 @extends('layouts.master')
 <style type="text/css">
-    .header{
+    .nav{
         visibility: hidden;
     }
 .panel-body{
@@ -10,7 +10,7 @@
     visibility: hidden;
 }
 body{
-    background-color: #2292A4;
+    background-color: #2292A4!important;
 }
 
 </style>

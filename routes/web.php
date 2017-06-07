@@ -33,6 +33,8 @@ Route::group(['middleware' => ['login']], function () {
     Route::post('profile/{id}/edit', 'ProfileController@post_profile');
     Route::get('follow/{username}', 'ProfileController@follow');
     Route::get('unfollow/{username}', 'ProfileController@unfollow');
+    Route::get('like/{emotion}', 'EmotionsController@like');
+    Route::get('unlike/{emotion}', 'EmotionsController@unlike');
 
 
 });
