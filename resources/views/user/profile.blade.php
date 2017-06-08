@@ -124,11 +124,11 @@
             <li><button type="button" class="btn btn-success" style="width: 100%; margin-bottom: 5px;">Inbox</button></li>
             @else
             <li>
-              @if(count($follow) > 0)
+              {{--@if(count($follow) > 0)
               <a href="{{url('unfollow/'.$follow->id)}}" class="btn btn-success" style="margin-bottom: 5px; width: 100%;"> Followed </a>
               @else
               <a href="{{url('follow/'.$user->username)}}" class="btn btn-info" style="margin-bottom: 5px; width: 100%;"> Follow</a>
-              @endif
+              @endif--}}
               @endif
             </li>
             @if ($user->id == Auth::id())

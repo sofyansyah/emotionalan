@@ -8,7 +8,7 @@ use App\Emoticon;
 use App\User;
 use App\Comment;
 use App\Like;
-
+use Image;
 use Auth;
 class EmotionsController extends Controller
 {
@@ -31,7 +31,7 @@ class EmotionsController extends Controller
         // ->get();
       $emoticons = Emoticon::all();
       $users = User::inrandomOrder()->limit(5)->get();
-      $likes = Like::all();
+
      
       return view ('emotion.index', compact('emotions','emoticons','users','likes'));
     }
@@ -65,15 +65,19 @@ class EmotionsController extends Controller
 
         //     ]);
 
-       // $file       = $request->file('emot');
-       // $fileName   = $file->getClientOriginalName();
-       // $request->file('emot')->move("img/emot/", $fileName);
+       if($request->hasFile('emot')){
 
-       // $emotion->emot = $fileName;
-       // $emotion->save();
+            $emot = $request->file('emot');
+            $filename = $request->emotion.'_'.str_random(4) . '.'.pathinfo($request->file('emot')->getClientOriginalName(),PATHINFO_EXTENSION);
+            Image::make($emot)->crop(300, 300)->save (public_path('/img/emot/' . $filename));
+            $emotion->emot = $filename;
+            $emotion->save();
+            }
 
-     return redirect ('/home');
+
+        return redirect('home');
    }
+
    public function show($id)
    {
     $emotion = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
@@ -124,21 +128,4 @@ class EmotionsController extends Controller
      return redirect ('/home');
    }
 
-   public function like($username)
-   {
-    $user = User::whereUsername($username)->first();
-    $like = new Like;
-    $like->user_id        = Auth::user()->id;
-    $like->emotion_id  = $emotions->id;
-    $like->save();
-
-    return redirect()->back()->with('success','Berhasil Like '.$username);
-  }
-  public function unlike($id)
-  {
-    $like = Like::findOrFail($id);
-    $like->delete();
-
-    return redirect()->back()->with('success','Berhasil Unlike ');
-  }
 }

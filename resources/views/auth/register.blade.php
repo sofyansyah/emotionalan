@@ -4,13 +4,13 @@
         visibility: hidden;
     }
 body{
-    background-color: #2292A4!important;    
+    background-color: #4CB944!important;    
 }
 </style>
 @section('content')
 <style type="text/css">
   .panel-body{
-    background-color: #2292A4!important;
+    background-color: #4CB944!important;
 }  
 label{
     color: #fafafa;
