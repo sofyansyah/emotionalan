@@ -48,68 +48,9 @@
 @section('content')
 
 <div class="container">
+	
 
-	<div class="col-md-2">
-		<ul class="menu">
-			@if (Auth::guest())
-			<li><a href="{{ url('/login') }}">Login</a></li>
-			<!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
-			@else
-			<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="width: 100%; background-color: #8CD790; border-color: none;">Posting</button>
-			</li>
-			<li> <img src="{{asset('img/avatar/'.Auth::user()->avatar)}}" class="img-circle" height="20px" width="20" style="float: left; margin: -4 5px 0 0;">
-				<a href="{{url('/profile')}}/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
-
-				<li><a href="#"><img src="{{asset('img/icon/envelope.svg')}}" height="18"> Inbox</a></li>
-				<li><a href="#"><img src="{{asset('img/icon/notifications.svg')}}" height="18"> Notification</a></li>
-				<li>
-					<a href="{{ url('/logout') }}"
-					onclick="event.preventDefault();
-					document.getElementById('logout-form').submit();">
-					<img src="{{asset('img/icon/exit.svg')}}" height="18"> Logout
-				</a>
-
-				<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-					{{ csrf_field() }}
-				</form>
-			</li>
-			@endif
-		</ul>
-	</div>  
-
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-body" style="height: 280px;">
-					<form action="{{url('/home')}}" method="POST" enctype="multipart/form-data">
-						{{ csrf_field()}}
-						<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-					<!-- 	<div class="form-group">
-
-							<input type="text" class="form-control" rows="5" id="title" placeholder="Title" name="title">
-						</div> -->
-						<div class="form-group">
-
-							<textarea class="form-control" rows="5" id="text" placeholder="Text" name="text"></textarea>
-						</div>
-						<div class="form-group">
-
-							<input type="file" id="emot" placeholder="Image" name="emot">
-							<input type="hidden" value="{{ 'csrf_token' }}" name="token">
-						</div>
-						<input type="submit" name="submit" value="Post" class="btn btn-info pull-right">
-					</form>
-					<button type="button" class="btn btn-warning pull-right" data-dismiss="modal" style="margin-right: 5px;">Close</button>
-				</div>
-			</div>   
-		</div>
-	</div>
-
-
-
-	<div class="col-md-7 nopadding">
+	<div class="col-md-9 nopadding">
 		<div class="panel panel-body" style="margin-bottom: 20px;">
 			<div class="col-md-12">
 
@@ -167,12 +108,12 @@
 				</div> <!-- cd-timeline-img -->
 
 				<div class="cd-timeline-content">
-					<div class=" col-md-2">
-						<!-- <h4 style="font-size: 16px; padding: 5px;">{{$usernya->fullname }}</h4> -->
-						<a href="{{url('profile/'.$usernya->username)}}"><h4 style="font-size: 14px; margin-bottom: 10px;">{{'@'. $usernya->username }}</h4></a>
-						{{--$data->created_at->diffForHumans()--}}
+					<!-- <h4 style="font-size: 16px; padding: 5px;">{{$usernya->fullname }}</h4> -->
+					<div class="col-md-12" style="margin-bottom: 10px;">
+						<a href="{{url('profile/'.$usernya->username)}}"><h4 style="font-size: 14px; margin-bottom: 10px; float: left;">{{'@'. $usernya->username }}</h4></a>
+						<p style="float: right; font-size: 12px;">{{$data->created_at->diffForHumans()}}</p>
 					</div>
-					<!--  -->
+
 					<div class="col-md-12 text-left">
 						<p>{{'"'. $data->reply .'"'}}</p>
 					</div>
@@ -190,9 +131,9 @@
 
 			<!-- Modal content-->
 			<div class="modal-content">
-				<div class="modal-body" style="height: 42%;padding: 20px 0;">
+				<div class="modal-body" style="height: 100%;padding: 20px 0;">
 					<div class="col-md-4">
-						<img src="{{asset('img/image/'. $emotion->image)}}" width="100%">
+						<img src="{{asset('img/emot/'.$emotion->emot)}}" width="auto" style="margin-bottom: 20px;">
 					</div>
 					<div class="col-md-8" style="background-color: #fff;">
 						<form action="{{url('/emotion/' .$emotion->id) }}" method="POST">
@@ -217,20 +158,33 @@
 </div>
 </div>
 
-<div class="col-md-3">
-	<div class="panel panel-body" style="padding: 15px 20px!important;">
-		<h4>#Trending Tags</h4>
+<div class="col-md-3" style="padding-right: 0;">
+	<div class="panel panel-body" style="padding: 15px 15px!important; background: linear-gradient(#fff,#f9f9f9);border: 1px solid #ddd;">
+		<h4>Top Emoji</h4>
 		<ul class="tags">
-			<li>KZL</li>
-			<li>mantap jiwa</li>
-			<li>ngabuburit</li>
-			<li>bukber</li>
-			<li>kolak</li>
-			<li>macet</li>
+			<?php
+			use App\Emotion;
+			$emotions = Emotion::join('users', 'emotions.user_id', '=', 'users.id')
+        // ->join('emoticons', 'emotions.user_id', '=', 'emoticons.id')
+			->select('emotions.*','users.username', 'users.avatar', 'users.fullname')
+			->limit(6)
+			->latest()
+			->get();
+			?>
+			@forelse($emotions as $user)
+			<div class="col-md-6" style="padding: 0;">
+				<li>
+					<img src="{{asset('img/emot/'.$user->emot)}}" height="50" width="50">
+					<p>{{--$user->text--}}</p></li>
+				</div>
+				@empty
+				no
+				@endforelse
 
-		</ul>
+			</ul>
+		</div>
 	</div>
-</div>
+
 </div>
 
 

@@ -90,7 +90,7 @@ class EmotionsController extends Controller
     ->where('comments.status','1')
     ->select('comments.id as comments_id','comments.user_id','comments.reply','emotions.id as post_id')
     ->get();
-
+    $comment = Comment::all();
                             // dd($coba);
 
     return view('emotion.show', compact ('emotion','comment'));
@@ -110,7 +110,7 @@ class EmotionsController extends Controller
    ->select('emotions.*','users.username')
    ->first();
    $emotion->update($request->all());
-   return redirect ('/home');
+   return redirect ('/emotion/' .$emotion->id);
  }
     /**
      * Remove the specified resource from storage.

@@ -21,10 +21,12 @@ class ProfileController extends Controller
      //        ->first();
 
         $user = User::whereUsername($id)->first();
-        $post = Emotion::where('user_id',Auth::user()->id)
-        ->orderBy('id', 'desc')
-        ->get();
-
+        $post = User::whereUsername($id)->join('emotions', 'users.id', '=', 'emotions.user_id')
+        // ->join('emoticons', 'emotions.user_id', '=', 'emoticons.id')
+      ->select('users.*','emotions.emot', 'emotions.text')
+      ->orderBy('id', 'desc')
+      ->get();
+      
         $follow = Follow::where('user_id',Auth::user()->id)->where('id_userfollow',$user->id)->first();
 
         // DB::table('emotions')->groupBy('user_id')->count();
